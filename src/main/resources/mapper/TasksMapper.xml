@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pzj.schoolrun.mapper.TasksMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pzj.schoolrun.entity.Tasks">
+        <id column="task_id" property="taskId" />
+        <result column="user_id" property="userId" />
+        <result column="task_type" property="taskType" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="pickup_location" property="pickupLocation" />
+        <result column="pickup_coordinates" property="pickupCoordinates" />
+        <result column="delivery_location" property="deliveryLocation" />
+        <result column="delivery_coordinates" property="deliveryCoordinates" />
+        <result column="deadline" property="deadline" />
+        <result column="status" property="status" />
+        <result column="payment_status" property="paymentStatus" />
+        <result column="remark" property="remark" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+        <result column="images_url" property="imagesUrl" />
+    </resultMap>
+
+</mapper>

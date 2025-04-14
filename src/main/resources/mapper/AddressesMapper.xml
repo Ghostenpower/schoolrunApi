@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pzj.schoolrun.mapper.AddressesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pzj.schoolrun.entity.Addresses">
+        <id column="address_id" property="addressId" />
+        <result column="user_id" property="userId" />
+        <result column="address_type" property="addressType" />
+        <result column="recipient_name" property="recipientName" />
+        <result column="phone" property="phone" />
+        <result column="detailed_address" property="detailedAddress" />
+        <result column="is_default" property="isDefault" />
+        <result column="status" property="status" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+</mapper>
