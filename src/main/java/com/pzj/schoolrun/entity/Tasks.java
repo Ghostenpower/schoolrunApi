@@ -1,13 +1,10 @@
 package com.pzj.schoolrun.entity;
 
-import cn.hutool.core.util.DesensitizedUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
-
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -24,7 +21,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("tasks")
-@Builder
 public class Tasks implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -109,4 +105,6 @@ public class Tasks implements Serializable {
      * 图片列表url(逗号分隔)
      */
     private String imagesUrl;
+
+
 }

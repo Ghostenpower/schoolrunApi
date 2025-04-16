@@ -50,9 +50,4 @@ public class TasksAddVO {
      * 备注信息
      */
     private String remark;
-
-    /**
-     * 图片列表url(逗号分隔)
-     */
-    private String imagesUrl;
 }
