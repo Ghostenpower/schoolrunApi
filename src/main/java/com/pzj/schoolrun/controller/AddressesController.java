@@ -84,8 +84,7 @@ public class AddressesController extends BaseController {
         if(!Objects.equals(userId, address.getUserId())){
             return Result.error("非法操作");
         }
-        addressesService.removeById(addressId);
+        addressesService.delete(addressId);
         return Result.success();
     }
-
 }
