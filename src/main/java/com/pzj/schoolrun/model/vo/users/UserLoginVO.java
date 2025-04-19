@@ -1,5 +1,8 @@
 package com.pzj.schoolrun.model.vo.users;
 
+import lombok.Data;
+
+@Data
 public class UserLoginVO {
     /**
      * 用户名
