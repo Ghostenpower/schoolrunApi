@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pzj.schoolrun.mapper.OrdersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pzj.schoolrun.entity.Orders">
+        <id column="order_id" property="orderId" />
+        <result column="task_id" property="taskId" />
+        <result column="courier_id" property="courierId" />
+        <result column="order_status" property="orderStatus" />
+        <result column="accept_time" property="acceptTime" />
+        <result column="completion_time" property="completionTime" />
+        <result column="cancel_time" property="cancelTime" />
+        <result column="cancel_reason" property="cancelReason" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+</mapper>

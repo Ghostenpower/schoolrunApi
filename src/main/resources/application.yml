@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: code-generator
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://159.75.81.17:3306/campus_run?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 0730b3537dbc1538
+  data:
+    redis:
+      port: 6379
+      host: localhost
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  profiles:
+    active: local
+
+server:
+  servlet:
+    context-path: /api
+  port: 8051
+
+
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+# springdoc-openapi
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.pzj
+# knife4j
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  file:
+    path: ../log/schoolrun.log
+  level:
+    com.pzj.schoolrun.mapper: debug
+
+pagehelper:
+  helper-dialect: mysql       # 数据库方言
+  reasonable: true            # 分页合理化
+  support-methods-arguments: true # 支持接口参数
+  params: count=countSql      # count语句参数
