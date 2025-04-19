@@ -50,6 +50,7 @@ public class TasksController extends BaseController {
                 .deliveryCoordinates(tasksAddVO.getDeliveryCoordinates())
                 .deadline(tasksAddVO.getDeadline())
                 .imagesUrl(tasksAddVO.getImagesUrl())
+                .price(tasksAddVO.getPrice())
                 .status(0)
                 .paymentStatus(0)
                 .remark(tasksAddVO.getRemark())

@@ -2,6 +2,7 @@ package com.pzj.schoolrun.model.vo.tasks;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -55,4 +56,9 @@ public class TasksAddVO {
      * 图片列表url(逗号分隔)
      */
     private String imagesUrl;
+
+    /**
+     * 任务金额（精确到分）
+     */
+    private BigDecimal price;
 }
