@@ -4,6 +4,8 @@ import cn.hutool.core.util.DesensitizedUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -79,6 +81,11 @@ public class Tasks implements Serializable {
      * 任务截止时间
      */
     private LocalDateTime deadline;
+
+    /**
+     * 任务金额（精确到分）
+     */
+    private BigDecimal price;
 
     /**
      * 状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
