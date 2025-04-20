@@ -8,6 +8,7 @@ import com.pzj.schoolrun.model.vo.users.UserLoginVO;
 import com.pzj.schoolrun.model.vo.users.UserRegisterVO;
 import com.pzj.schoolrun.model.vo.users.UserUpdateVO;
 import com.pzj.schoolrun.service.IUsersService;
+import com.pzj.schoolrun.util.JWT;
 import com.pzj.schoolrun.util.JwtUtil;
 import com.pzj.schoolrun.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 /**
  * <p>
@@ -54,7 +56,7 @@ public class UsersController extends BaseController {
             }
 
             // 3. 生成token
-            String token = jwtUtil.generateToken(user.getUserId(), user.getUsername());
+            String token = JWT.createJwt(Map.of("userId", user.getUserId()));
 
             // 4. 构建返回对象
             UserLoginDTO userLoginDTO = new UserLoginDTO();
