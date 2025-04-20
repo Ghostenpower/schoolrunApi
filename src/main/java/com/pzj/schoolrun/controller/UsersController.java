@@ -12,10 +12,7 @@ import com.pzj.schoolrun.util.JWT;
 import com.pzj.schoolrun.util.JwtUtil;
 import com.pzj.schoolrun.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -75,6 +72,12 @@ public class UsersController extends BaseController {
         } catch (Exception e) {
             return Result.error("登录失败：" + e.getMessage());
         }
+    }
+
+    @GetMapping("/getOneById")
+    public Result<?> getOneById(@RequestParam Long userId) {
+        Users user = usersService.getById(userId);
+        return Result.success(user);
     }
 
     @PostMapping("/register")

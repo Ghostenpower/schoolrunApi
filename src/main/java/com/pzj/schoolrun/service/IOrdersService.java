@@ -5,6 +5,7 @@ import com.pzj.schoolrun.entity.Orders;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.pzj.schoolrun.entity.Tasks;
 import com.pzj.schoolrun.model.Result;
+import com.pzj.schoolrun.model.dto.orders.OrderDetailDTO;
 import com.pzj.schoolrun.model.vo.orders.OrdersAddVO;
 import com.pzj.schoolrun.model.vo.orders.OrdersCancelVO;
 
@@ -34,6 +35,6 @@ public interface IOrdersService extends IService<Orders> {
      */
     Result<?> cancelOrder(OrdersCancelVO ordersCancelVO);
     List<Orders> getByOrderIds(Long orderIds);
-    List<Orders> getAllOrders(Long userId);
+    List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus);
 
 }

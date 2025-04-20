@@ -35,6 +35,12 @@ public class TasksController extends BaseController {
         return Result.success(PageInfo.of(list));
     }
 
+    @GetMapping("/getOneById")
+    public Result<?> getOneById(@RequestParam Long taskId) {
+        Tasks tasks = tasksService.getById(taskId);
+        return Result.success(tasks);
+    }
+
     @PostMapping("/add")
     public Result<?> add(@RequestBody TasksAddVO tasksAddVO) {
         //Long userId = getUserId();

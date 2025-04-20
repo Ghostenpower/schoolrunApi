@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pzj.schoolrun.entity.Orders;
 import com.pzj.schoolrun.mapper.OrdersMapper;
 import com.pzj.schoolrun.model.Result;
+import com.pzj.schoolrun.model.dto.orders.OrderDetailDTO;
 import com.pzj.schoolrun.model.vo.orders.OrdersAddVO;
 import com.pzj.schoolrun.model.vo.orders.OrdersCancelVO;
 import com.pzj.schoolrun.service.IOrdersService;
@@ -35,10 +36,8 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         return ordersMapper.selectList(queryWrap);
     }
     @Override
-    public List<Orders> getAllOrders(Long userId) {
-        LambdaQueryWrapper<Orders> queryWrap = new LambdaQueryWrapper<>();
-        queryWrap.eq(Orders::getCourierId, userId);
-        return ordersMapper.selectList(queryWrap);
+    public List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus) {
+        return ordersMapper.getAllOrders(userId, orderStatus);
     }
     @Override
     public Result<?> cancelOrder(OrdersCancelVO ordersCancelVO) {
