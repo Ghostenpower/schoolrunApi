@@ -55,7 +55,10 @@ public class AddressesController extends BaseController {
                 .addressType(addressesVO.getAddressType())
                 .recipientName(addressesVO.getRecipientName())
                 .phone(addressesVO.getPhone())
-                .detailedAddress(addressesVO.getDetailedAddress()).build();
+                .detailedAddress(addressesVO.getDetailedAddress())
+                .pickupCoordinates(addressesVO.getPickupCoordinates())
+                .deliveryCoordinates(addressesVO.getDeliveryCoordinates())
+                .build();
         addressesService.save(address);
         return Result.success();
     }
@@ -72,6 +75,8 @@ public class AddressesController extends BaseController {
                 .recipientName(addressesUpdateVO.getRecipientName())
                 .phone(addressesUpdateVO.getPhone())
                 .detailedAddress(addressesUpdateVO.getDetailedAddress())
+                .pickupCoordinates(addressesUpdateVO.getPickupCoordinates())
+                .deliveryCoordinates(addressesUpdateVO.getDeliveryCoordinates())
                 .isDefault(addressesUpdateVO.getIsDefault()).build();
         addressesService.updateById(address);
         return Result.success();
