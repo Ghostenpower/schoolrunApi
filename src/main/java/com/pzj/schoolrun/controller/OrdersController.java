@@ -133,6 +133,7 @@ public class OrdersController extends BaseController {
         if (order == null) {
             return Result.error(StatusCode.ORDER_NOT_EXIST);
         }
+        Tasks task=tasksService.getById(order.getTaskId());
         if (order.getCourierId().equals(userId)) {
             return Result.error(StatusCode.INVALID_OPERATION);
         }
@@ -143,12 +144,9 @@ public class OrdersController extends BaseController {
             return Result.error("订单已取消");
         }
         order.setOrderStatus(2);
-        order.setCompletionTime(LocalDateTime.now());
-        boolean result = ordersService.updateById(order);
-        if (result) {
-            return Result.success();
-        } else {
-            return Result.error(StatusCode.SERVER_ERROR);
-        }
+        task.setStatus(3);
+        ordersService.updateById(order);
+        tasksService.updateById(task);
+        return Result.success();
     }
 }
