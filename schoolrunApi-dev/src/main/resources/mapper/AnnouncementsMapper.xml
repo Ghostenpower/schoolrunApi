@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pzj.schoolrun.mapper.AnnouncementsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pzj.schoolrun.entity.Announcements">
+        <id column="announcement_id" property="announcementId" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="admin_id" property="adminId" />
+        <result column="announcement_type" property="announcementType" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="priority" property="priority" />
+        <result column="status" property="status" />
+        <result column="target_audience" property="targetAudience" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+</mapper>
