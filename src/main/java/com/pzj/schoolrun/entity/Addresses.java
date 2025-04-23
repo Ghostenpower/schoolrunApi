@@ -60,6 +60,16 @@ public class Addresses implements Serializable {
     private String detailedAddress;
 
     /**
+     * 取件坐标
+     */
+    private String pickupCoordinates;
+
+    /**
+     * 送达坐标
+     */
+    private String deliveryCoordinates;
+
+    /**
      * 是否默认地址(0=否,1=是)
      */
     private Integer isDefault;

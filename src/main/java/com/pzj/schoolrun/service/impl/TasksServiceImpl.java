@@ -1,10 +1,14 @@
 package com.pzj.schoolrun.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pzj.schoolrun.entity.Tasks;
 import com.pzj.schoolrun.mapper.TasksMapper;
 import com.pzj.schoolrun.service.ITasksService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +21,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements ITasksService {
 
+    @Autowired
+    private TasksMapper tasksMapper;
+
+    @Override
+    public List<Tasks> getByUserId(Long userId) {
+        LambdaQueryWrapper<Tasks> queryWrap = new LambdaQueryWrapper<>();
+        queryWrap.eq(Tasks::getUserId,userId);
+        return tasksMapper.selectList(queryWrap);
+    }
 }

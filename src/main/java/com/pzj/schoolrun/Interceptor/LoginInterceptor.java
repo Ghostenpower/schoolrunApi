@@ -52,9 +52,10 @@ public class LoginInterceptor implements HandlerInterceptor {
             Long userId = user_id.longValue();
 
             request.setAttribute("userId", userId);
+            ThreadLocalUntil.setUserId(userId);
 
             // 你也可以将 claims 设置到 ThreadLocal 中以便后续使用
-            ThreadLocalUntil.set(claims);
+            ThreadLocalUntil.set("token",claims);
 
             return true;
         } catch (Exception e) {
@@ -86,6 +87,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, Exception ex) {
-        ThreadLocalUntil.remove();
+        ThreadLocalUntil.clear();
     }
 }

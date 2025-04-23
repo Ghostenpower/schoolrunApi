@@ -3,6 +3,8 @@ package com.pzj.schoolrun.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
@@ -62,6 +64,11 @@ public class Users implements Serializable {
     private Integer userType;
 
     /**
+     * 余额
+     */
+    private BigDecimal balance;
+
+    /**
      * 状态(0禁用,1正常)
      */
     private Integer status;
@@ -75,6 +82,4 @@ public class Users implements Serializable {
      * 更新时间
      */
     private LocalDateTime updatedAt;
-
-
 }

@@ -1,10 +1,15 @@
 package com.pzj.schoolrun.entity;
 
+import cn.hutool.core.util.DesensitizedUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -21,6 +26,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("tasks")
+@Builder
 public class Tasks implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -77,6 +83,11 @@ public class Tasks implements Serializable {
     private LocalDateTime deadline;
 
     /**
+     * 任务金额（精确到分）
+     */
+    private BigDecimal price;
+
+    /**
      * 状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
      */
     private Integer status;
@@ -105,6 +116,4 @@ public class Tasks implements Serializable {
      * 图片列表url(逗号分隔)
      */
     private String imagesUrl;
-
-
 }

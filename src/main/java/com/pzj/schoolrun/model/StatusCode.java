@@ -18,7 +18,7 @@ public enum StatusCode {
     REGISTRATION_CLOSED(4003, "系统暂未开放注册"),
     TASK_NOT_EXIST(4004, "任务不存在"),
     TASK_STATUS_ILLEGAL(4005, "任务状态非法"),
-    INVALID_OPERATION(4006, "不能接取自己发布的任务"),
+    INVALID_OPERATION(4006, "非法操作"),
     REPEATED_ACCEPT(4007, "不能重复接取任务"),
     ORDER_NOT_EXIST(4008, "订单不存在" ),
     ORDER_STATUS_ILLEGAL(4009, "订单状态非法"),
@@ -26,7 +26,8 @@ public enum StatusCode {
     INVALID_ORDER_STATUS(4010, "非法订单状态"),
     PHONE_CONFLICT(1004, "手机号已存在" ),
     USER_NOT_EXIST(1005, "用户不存在"),
-    SERVER_ERROR(5000, "服务器内部错误" );
+    SERVER_ERROR(5000, "服务器内部错误" ),
+    COURIER_NOT_EXIST(1006, "快递员不存在");
     // 提供 getter 方法
     private final int code;
     private final String message;

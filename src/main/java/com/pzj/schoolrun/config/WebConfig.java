@@ -17,22 +17,22 @@ public class WebConfig implements WebMvcConfigurer {
         this.loginInterceptor = loginInterceptor;
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(loginInterceptor)
-//                .excludePathPatterns(
-//                        "/users/register",
-//                        "/users/login",
-//                        "/swagger-ui.html",
-//                        "/doc.html",
-//                        "/webjars/**",
-//                        "/swagger-resources/**",
-//                        "/v3/api-docs/**",
-//                        "/api/doc.html"
-//                )
-//                .addPathPatterns("/**")
-//                .order(1);
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginInterceptor)
+                .excludePathPatterns(
+                        "/users/register",
+                        "/users/login",
+                        "/swagger-ui.html",
+                        "/doc.html",
+                        "/webjars/**",
+                        "/swagger-resources/**",
+                        "/v3/api-docs/**",
+                        "/api/doc.html"
+                )
+                .addPathPatterns("/**")
+                .order(1);
+    }
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {

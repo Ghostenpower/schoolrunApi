@@ -18,4 +18,6 @@ public interface IAddressesService extends IService<Addresses> {
     List<Addresses> getList();
 
     List<Addresses> getByUserId(Long userId);
+
+    void delete(Long addressId);
 }

@@ -1,9 +1,11 @@
 package com.pzj.schoolrun.util;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+@Slf4j
 public class ServletUtils {
 
     /**
@@ -18,7 +20,7 @@ public class ServletUtils {
      */
     public static String getParameter(String name) {
         HttpServletRequest request = getRequest();
-        return request != null ? request.getParameter(name) : null;
+        return request.getParameter(name);
     }
 
     /**

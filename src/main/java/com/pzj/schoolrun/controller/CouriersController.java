@@ -3,13 +3,12 @@ package com.pzj.schoolrun.controller;
 
 import com.pzj.schoolrun.entity.Couriers;
 import com.pzj.schoolrun.model.Result;
+import com.pzj.schoolrun.model.vo.couriers.CouriersVO;
 import com.pzj.schoolrun.service.impl.CouriersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -27,10 +26,26 @@ public class CouriersController extends BaseController{
     private CouriersServiceImpl couriersService;
 
     @PostMapping("/apply")
-    public Result<?> apply(@RequestBody Couriers couriers) {
+    public Result<?> apply(@RequestBody CouriersVO couriersVO) {
+        Couriers couriers = Couriers.builder()
+                .userId(getUserId())
+                .idCard(couriersVO.getIdCard())
+                .idCardFront(couriersVO.getIdCardFront())
+                .idCardBack(couriersVO.getIdCardBack())
+                .studentCard(couriersVO.getStudentCard())
+                .creditScore(0)
+                .totalOrders(0)
+                .status(0)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
         Long userId = getUserId();
         if (!userId.equals(couriers.getUserId())) {
             return Result.error("用户id不能为空");
+        }
+        //不可再次申请
+        if (couriersService.query().eq("user_id", userId).one() != null) {
+            return Result.error("不可再次申请");
         }
         couriers.setStatus(0);
         couriers.setCourierId(null);
@@ -42,5 +57,14 @@ public class CouriersController extends BaseController{
             return Result.success("申请成功");
         }
         return Result.error("申请失败");
+    }
+
+    @GetMapping("/getOneById")
+    public Result<?> getOneById(@RequestParam Long courierId) {
+        Couriers couriers = couriersService.getById(courierId);
+        if (couriers == null) {
+            return Result.error("跑腿员不存在");
+        }
+        return Result.success(couriers);
     }
 }

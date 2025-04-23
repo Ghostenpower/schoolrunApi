@@ -16,4 +16,41 @@
         <result column="updated_at" property="updatedAt" />
     </resultMap>
 
+    <select id="getAllOrders" resultType="com.pzj.schoolrun.model.dto.orders.OrderDetailDTO">
+        SELECT
+            o.order_id as orderId,
+            o.order_status as orderStatus,
+            o.accept_time as acceptTime,
+            o.completion_time as completionTime,
+            t.task_id as taskId,
+            t.title AS taskTitle,
+            t.description AS taskDescription,
+            t.pickup_location as pickupLocation,
+            t.delivery_location as deliveryLocation,
+            t.deadline,
+            t.status AS taskStatus,
+            u.user_id AS customerId,
+            u.username AS customerName,
+            u.phone AS customerPhone,
+            u.avatar_url as customerAvatarUrl
+        FROM
+            orders o
+                JOIN
+            tasks t ON o.task_id = t.task_id
+                JOIN
+            users u ON t.user_id = u.user_id
+                JOIN
+            couriers c ON o.courier_id = c.courier_id
+                JOIN
+            users u2 ON c.user_id = u2.user_id
+        <where>
+            <if test="userId != null">
+                AND u2.user_id = #{userId}
+            </if>
+            <if test="orderStatus != null and orderStatus != 0">
+                AND o.order_status = #{orderStatus}
+            </if>
+        </where>
+        order by o.created_at desc
+    </select>
 </mapper>
