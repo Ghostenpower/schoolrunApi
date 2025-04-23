@@ -10,6 +10,8 @@
         <result column="recipient_name" property="recipientName" />
         <result column="phone" property="phone" />
         <result column="detailed_address" property="detailedAddress" />
+        <result column="pickup_coordinates" property="pickupCoordinates" />
+        <result column="delivery_coordinates" property="deliveryCoordinates" />
         <result column="is_default" property="isDefault" />
         <result column="status" property="status" />
         <result column="created_at" property="createdAt" />

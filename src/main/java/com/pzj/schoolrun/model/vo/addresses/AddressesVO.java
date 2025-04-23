@@ -24,4 +24,14 @@ public class AddressesVO {
      */
     private String detailedAddress;
 
+    /**
+     * 取件坐标
+     */
+    private String pickupCoordinates;
+
+    /**
+     * 送达坐标
+     */
+    private String deliveryCoordinates;
+
 }

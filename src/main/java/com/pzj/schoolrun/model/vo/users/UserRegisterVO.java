@@ -1,16 +1,9 @@
 package com.pzj.schoolrun.model.vo.users;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 @Data
 public class UserRegisterVO {
-    /**
-     * 用户ID
-     */
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Long userId;
     /**
      * 用户名
      */
@@ -30,9 +23,4 @@ public class UserRegisterVO {
      * 邮箱
      */
     private String email;
-
-    /**
-     * 头像URL
-     */
-    private String avatarUrl;
 }

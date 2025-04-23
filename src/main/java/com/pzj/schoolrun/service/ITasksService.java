@@ -3,6 +3,8 @@ package com.pzj.schoolrun.service;
 import com.pzj.schoolrun.entity.Tasks;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 跑腿任务表 服务类
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITasksService extends IService<Tasks> {
 
+    List<Tasks> getByUserId(Long userId);
 }

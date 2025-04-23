@@ -20,6 +20,7 @@
         <result column="created_at" property="createdAt" />
         <result column="updated_at" property="updatedAt" />
         <result column="images_url" property="imagesUrl" />
+        <result column="price" property="price" />
     </resultMap>
 
 </mapper>

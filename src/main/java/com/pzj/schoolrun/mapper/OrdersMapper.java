@@ -2,7 +2,10 @@ package com.pzj.schoolrun.mapper;
 
 import com.pzj.schoolrun.entity.Orders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.pzj.schoolrun.model.dto.orders.OrderDetailDTO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface OrdersMapper extends BaseMapper<Orders> {
 
+    List<OrderDetailDTO> getAllOrders(Integer orderStatus);
 }

@@ -40,4 +40,12 @@ public class AddressesServiceImpl extends ServiceImpl<AddressesMapper, Addresses
         return addressesMapper.selectList(queryWrap);
     }
 
+    @Override
+    public void delete(Long addressId) {
+        //只更新status而非删除
+        Addresses addresses = addressesMapper.selectById(addressId);
+        addresses.setStatus(0);
+        addressesMapper.updateById(addresses);
+    }
+
 }

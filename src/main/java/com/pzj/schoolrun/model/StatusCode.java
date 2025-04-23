@@ -18,7 +18,7 @@ public enum StatusCode {
     REGISTRATION_CLOSED(4003, "系统暂未开放注册"),
     TASK_NOT_EXIST(4004, "任务不存在"),
     TASK_STATUS_ILLEGAL(4005, "任务状态非法"),
-    INVALID_OPERATION(4006, "不能接取自己发布的任务"),
+    INVALID_OPERATION(4006, "非法操作"),
     REPEATED_ACCEPT(4007, "不能重复接取任务"),
     ORDER_NOT_EXIST(4008, "订单不存在" ),
     ORDER_STATUS_ILLEGAL(4009, "订单状态非法"),

@@ -38,4 +38,14 @@ public class AddressesUpdateVO {
      * 是否默认地址(0=否,1=是)
      */
     private Integer isDefault;
+
+    /**
+     * 取件坐标
+     */
+    private String pickupCoordinates;
+
+    /**
+     * 送达坐标
+     */
+    private String deliveryCoordinates;
 }

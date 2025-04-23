@@ -19,6 +19,10 @@ public class Result<T> {
         return new Result<>(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), data);
     }
 
+    public static <T> Result<T> success(StatusCode resultCode, T data) {
+        return new Result<>(resultCode.getCode(), resultCode.getMsg(), data);
+    }
+
     public static Result<Void> success() {
         return success(null);
     }
@@ -28,15 +32,11 @@ public class Result<T> {
         return new Result<>(StatusCode.FAIL.getCode(), msg, null);
     }
 
-    public static Result<Void> error(StatusCode resultCode, String msg) {
-        return new Result<>(resultCode.getCode(), msg, null);
-    }
-
     public static <T> Result<T> error(Integer code, String msg) {
         return new Result<>(code, msg, null);
     }
 
-    public static Result<Void> error(StatusCode resultCode) {
+    public static Result<?> error(StatusCode resultCode) {
         return new Result<>(resultCode.getCode(), resultCode.getMsg(), null);
     }
 

@@ -2,6 +2,7 @@ package com.pzj.schoolrun.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.pzj.schoolrun.util.ServletUtils;
+import com.pzj.schoolrun.util.ThreadLocalUntil;
 import com.pzj.schoolrun.util.page.PageUtils;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class BaseController {
     }
 
     protected  Long getUserId(){
-        return ServletUtils.getParameterToLong("userId");
+        return ThreadLocalUntil.getUserId();
     }
 
     protected  void clearPage() {
