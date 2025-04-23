@@ -9,6 +9,7 @@ import com.pzj.schoolrun.model.vo.orders.OrdersAddVO;
 import com.pzj.schoolrun.model.vo.orders.OrdersCancelVO;
 import com.pzj.schoolrun.service.IOrdersService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.List;
  * @author
  * @since 2025-04-08
  */
+@Slf4j
 @Service
 public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements IOrdersService {
 
@@ -36,8 +38,11 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         return ordersMapper.selectList(queryWrap);
     }
     @Override
-    public List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus) {
-        return ordersMapper.getAllOrders(userId, orderStatus);
+    public List<OrderDetailDTO> getAllOrders(Integer orderStatus) {
+        log.info("Querying orders with orderStatus: {}", orderStatus);
+        List<OrderDetailDTO> list = ordersMapper.getAllOrders(orderStatus);
+        log.info("Query result size: {}", list.size());
+        return list;
     }
     @Override
     public Result<?> cancelOrder(OrdersCancelVO ordersCancelVO) {

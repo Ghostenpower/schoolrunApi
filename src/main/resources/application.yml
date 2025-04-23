@@ -6,16 +6,6 @@ spring:
     url: jdbc:mysql://159.75.81.17:3306/campus_run?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: root
     password: 0730b3537dbc1538
-    hikari:
-      connection-timeout: 10000
-      validation-timeout: 3000
-      idle-timeout: 60000
-      login-timeout: 5
-      max-lifetime: 60000
-      maximum-pool-size: 10
-      minimum-idle: 5
-      read-only: false
-
   data:
     redis:
       port: 6379

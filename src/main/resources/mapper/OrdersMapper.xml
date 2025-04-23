@@ -51,6 +51,5 @@
                 AND o.order_status = #{orderStatus}
             </if>
         </where>
-        order by o.created_at desc
     </select>
 </mapper>
