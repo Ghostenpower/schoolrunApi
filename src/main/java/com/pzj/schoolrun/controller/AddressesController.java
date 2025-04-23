@@ -35,7 +35,6 @@ public class AddressesController extends BaseController {
     public Result<?> getAddressList() {
         startPage();
         List<Addresses> list = addressesService.getList();
-
         return Result.success(PageInfo.of(list));
     }
 
