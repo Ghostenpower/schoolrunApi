@@ -26,11 +26,19 @@ public class TasksController extends BaseController {
     @Autowired
     private ITasksService tasksService;
 
-    @GetMapping("/getList")
+    @GetMapping("/all")
+    public Result<?> allList() {
+        startPage();
+        List<Tasks> list = tasksService.list();
+        return Result.success(PageInfo.of(list));
+    }
+
+    @GetMapping("/getByUserId")
     public Result<?> list() {
         startPage();
-        //Long userId = getUserId();
-        Long userId = 1L;
+//        Long userId = getUserId();
+//        System.out.println("8888:"+userId);
+        Long userId = 2L;
         List<Tasks> list = tasksService.getByUserId(userId);
         return Result.success(PageInfo.of(list));
     }
@@ -44,7 +52,7 @@ public class TasksController extends BaseController {
     @PostMapping("/add")
     public Result<?> add(@RequestBody TasksAddVO tasksAddVO) {
         //Long userId = getUserId();
-        Long userId = 1L;
+        Long userId = 2L;
         Tasks tasks = Tasks.builder()
                 .userId(userId)
                 .taskType(tasksAddVO.getTaskType())
