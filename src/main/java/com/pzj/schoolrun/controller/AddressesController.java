@@ -1,6 +1,5 @@
 package com.pzj.schoolrun.controller;
 
-
 import com.github.pagehelper.PageInfo;
 import com.pzj.schoolrun.entity.Addresses;
 import com.pzj.schoolrun.model.vo.addresses.AddressesUpdateVO;
@@ -65,7 +64,7 @@ public class AddressesController extends BaseController {
     @PostMapping("/update")
     public Result<?> update(@RequestBody AddressesUpdateVO addressesUpdateVO) {
         Long userId = getUserId();
-        if(!Objects.equals(userId, addressesUpdateVO.getUserId())){
+        if (!Objects.equals(userId, addressesUpdateVO.getUserId())) {
             return Result.error("非法操作");
         }
         Addresses address = Addresses.builder()
@@ -85,10 +84,12 @@ public class AddressesController extends BaseController {
     public Result<?> delete(@RequestParam Long addressId) {
         Long userId = getUserId();
         Addresses address = addressesService.getById(addressId);
-        if(!Objects.equals(userId, address.getUserId())){
+        if (!Objects.equals(userId, address.getUserId())) {
             return Result.error("非法操作");
         }
         addressesService.delete(addressId);
+
+        log.info("Address with ID {} deleted successfully for user ID {}", addressId, userId);
         return Result.success();
     }
 }

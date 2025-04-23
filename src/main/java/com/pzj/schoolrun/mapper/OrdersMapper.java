@@ -19,4 +19,5 @@ import java.util.List;
 public interface OrdersMapper extends BaseMapper<Orders> {
 
     List<OrderDetailDTO> getAllOrders(Integer orderStatus);
+    List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus);
 }

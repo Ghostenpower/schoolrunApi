@@ -26,7 +26,10 @@ public enum StatusCode {
     INVALID_ORDER_STATUS(4010, "非法订单状态"),
     PHONE_CONFLICT(1004, "手机号已存在" ),
     USER_NOT_EXIST(1005, "用户不存在"),
-    SERVER_ERROR(5000, "服务器内部错误" );
+    SERVER_ERROR(5000, "服务器内部错误" ),
+    COURIER_NOT_EXIST(1006, "快递员不存在"),
+    ORDER_CANCELED(1007, "订单已取消" ),
+    ORDER_COMPLETED(1008, "订单已完成");
     // 提供 getter 方法
     private final int code;
     private final String message;

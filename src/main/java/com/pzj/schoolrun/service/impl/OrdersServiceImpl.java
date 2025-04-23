@@ -44,6 +44,9 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         log.info("Query result size: {}", list.size());
         return list;
     }
+    public List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus) {
+        return ordersMapper.getAllOrders(userId, orderStatus);
+    }
     @Override
     public Result<?> cancelOrder(OrdersCancelVO ordersCancelVO) {
         // 获取订单 ID
