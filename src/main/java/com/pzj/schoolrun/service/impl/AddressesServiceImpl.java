@@ -41,14 +41,6 @@ public class AddressesServiceImpl extends ServiceImpl<AddressesMapper, Addresses
 
     @Override
     public void delete(Long addressId) {
-<<<<<<< HEAD
-        //只更新status而非删除
-        Addresses addresses = addressesMapper.selectById(addressId);
-        addresses.setStatus(0);
-        addressesMapper.updateById(addresses);
-    }
-
-=======
         // 校验 addressId 是否存在
         Addresses addresses = addressesMapper.selectById(addressId);
         if (addresses == null) {
@@ -58,5 +50,4 @@ public class AddressesServiceImpl extends ServiceImpl<AddressesMapper, Addresses
         addresses.setStatus(0);
         addressesMapper.updateById(addresses);
     }
->>>>>>> 288b4d51293d96ca0725ee5672ce3dfc3aa1346d
 }

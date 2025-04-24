@@ -1,6 +1,5 @@
 package com.pzj.schoolrun.controller;
 
-
 import com.github.pagehelper.PageInfo;
 import com.pzj.schoolrun.entity.Tasks;
 import com.pzj.schoolrun.model.Result;
@@ -26,7 +25,6 @@ public class TasksController extends BaseController {
     @Autowired
     private ITasksService tasksService;
 
-<<<<<<< HEAD
     @GetMapping("/all")
     public Result<?> allList() {
         startPage();
@@ -34,19 +32,10 @@ public class TasksController extends BaseController {
         return Result.success(PageInfo.of(list));
     }
 
-    @GetMapping("/getByUserId")
-    public Result<?> list() {
-        startPage();
-//        Long userId = getUserId();
-//        System.out.println("8888:"+userId);
-        Long userId = 2L;
-=======
-    @GetMapping("/getList")
     public Result<?> list() {
         startPage();
         //Long userId = getUserId();
         Long userId = 1L;
->>>>>>> 288b4d51293d96ca0725ee5672ce3dfc3aa1346d
         List<Tasks> list = tasksService.getByUserId(userId);
         return Result.success(PageInfo.of(list));
     }
@@ -60,11 +49,7 @@ public class TasksController extends BaseController {
     @PostMapping("/add")
     public Result<?> add(@RequestBody TasksAddVO tasksAddVO) {
         //Long userId = getUserId();
-<<<<<<< HEAD
-        Long userId = 2L;
-=======
         Long userId = 1L;
->>>>>>> 288b4d51293d96ca0725ee5672ce3dfc3aa1346d
         Tasks tasks = Tasks.builder()
                 .userId(userId)
                 .taskType(tasksAddVO.getTaskType())
@@ -117,5 +102,4 @@ public class TasksController extends BaseController {
         tasksService.updateById(tasks);
         return Result.success();
     }
-
 }
