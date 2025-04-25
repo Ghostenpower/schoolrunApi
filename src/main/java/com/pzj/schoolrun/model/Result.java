@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +28,12 @@ public class Result<T> {
 
     public static Result<Void> success() {
         return success(null);
+    }
+
+    public static Result<Map<String, Long>> successCourierId(Long courierId) {
+        Map<String, Long> dataMap = new HashMap<>();
+        dataMap.put("courierId", courierId);
+        return new Result<>(StatusCode.SUCCESS.getCode(), StatusCode.SUCCESS.getMsg(), dataMap);
     }
 
     //------------------ 错误响应静态方法 ------------------//

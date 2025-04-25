@@ -149,4 +149,12 @@ public class OrdersController extends BaseController {
         tasksService.updateById(task);
         return Result.success();
     }
+    @GetMapping("/getCourierIdByUserId")
+    public Result<?> getCourierIdByUserId(@RequestParam Long userId) {
+        Long courierId = couriersService.getCourierIdByUserId(userId);
+        if (courierId == null) {
+            return Result.error("未找到对应的courierId");
+        }
+        return Result.successCourierId(courierId);
+    }
 }
