@@ -34,8 +34,8 @@ public class TasksController extends BaseController {
 
     public Result<?> list() {
         startPage();
-        //Long userId = getUserId();
-        Long userId = 1L;
+        Long userId = getUserId();
+
         List<Tasks> list = tasksService.getByUserId(userId);
         return Result.success(PageInfo.of(list));
     }
@@ -102,4 +102,13 @@ public class TasksController extends BaseController {
         tasksService.updateById(tasks);
         return Result.success();
     }
+    @PostMapping("/acceptTask")
+    public Result<?> acceptTask(@RequestParam Long taskId) {
+        boolean success = tasksService.updateTaskStatus(taskId, 1); // 1 表示已接单
+        if (!success) {
+            return Result.error("任务不存在");
+        }
+        return Result.success();
+    }
+
 }
