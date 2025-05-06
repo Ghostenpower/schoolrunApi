@@ -3,6 +3,7 @@ package com.pzj.schoolrun.mapper;
 import com.pzj.schoolrun.entity.Tasks;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -14,5 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface TasksMapper extends BaseMapper<Tasks> {
-
+    int updateStatusById(@Param("id") Integer id, @Param("status") Integer status);
 }

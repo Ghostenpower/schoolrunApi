@@ -30,4 +30,13 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
         queryWrap.eq(Tasks::getUserId,userId);
         return tasksMapper.selectList(queryWrap);
     }
+    @Override
+    public boolean updateTaskStatus(Long taskId, Integer status) {
+        Tasks tasks = getById(taskId);
+        if (tasks == null) {
+            return false;
+        }
+        tasks.setStatus(status);
+        return updateById(tasks);
+    }
 }
