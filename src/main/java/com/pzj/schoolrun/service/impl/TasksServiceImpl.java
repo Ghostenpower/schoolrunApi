@@ -1,6 +1,7 @@
 package com.pzj.schoolrun.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pzj.schoolrun.entity.Tasks;
 import com.pzj.schoolrun.mapper.TasksMapper;
 import com.pzj.schoolrun.service.ITasksService;
@@ -31,12 +32,19 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
         return tasksMapper.selectList(queryWrap);
     }
     @Override
-    public boolean updateTaskStatus(Long taskId, Integer status) {
+    public boolean updateTaskStatus(Long taskId, Integer status, Long courierId) {
         Tasks tasks = getById(taskId);
         if (tasks == null) {
             return false;
         }
         tasks.setStatus(status);
+        tasks.setCourierId(courierId);
         return updateById(tasks);
     }
+
+    @Override
+    public List<Tasks> getByCourierId(Long courierId) {
+        return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("courier_id", courierId));
+    }
+
 }

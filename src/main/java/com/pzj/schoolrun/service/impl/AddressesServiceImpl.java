@@ -3,6 +3,7 @@ package com.pzj.schoolrun.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pzj.schoolrun.entity.Addresses;
 import com.pzj.schoolrun.mapper.AddressesMapper;
+import com.pzj.schoolrun.model.vo.addresses.AddressInfoVO;
 import com.pzj.schoolrun.service.IAddressesService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class AddressesServiceImpl extends ServiceImpl<AddressesMapper, Addresses
         queryWrap.eq(Addresses::getUserId, userId)
                 .eq(Addresses::getStatus, 1);
         return addressesMapper.selectList(queryWrap);
+    }
+
+    @Override
+    public AddressInfoVO getAddressInfoById(Long addressId) {
+        return addressesMapper.getAddressInfoById(addressId);
     }
 
     @Override

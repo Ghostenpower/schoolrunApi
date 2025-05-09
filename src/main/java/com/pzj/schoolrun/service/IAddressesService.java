@@ -2,6 +2,7 @@ package com.pzj.schoolrun.service;
 
 import com.pzj.schoolrun.entity.Addresses;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.pzj.schoolrun.model.vo.addresses.AddressInfoVO;
 
 import java.util.List;
 
@@ -20,4 +21,7 @@ public interface IAddressesService extends IService<Addresses> {
     List<Addresses> getByUserId(Long userId);
 
     void delete(Long addressId);
+
+    AddressInfoVO getAddressInfoById(Long addressId);
+
 }

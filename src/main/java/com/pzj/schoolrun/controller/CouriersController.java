@@ -67,4 +67,16 @@ public class CouriersController extends BaseController{
         }
         return Result.success(couriers);
     }
+
+    @GetMapping("/getCourierId")
+    public Result<?> getCourierId() {
+        Long userId = getUserId();
+        Couriers couriers = couriersService.query().eq("user_id", userId).one();
+        if (couriers == null) {
+            return Result.error("跑腿员不存在");
+        }
+        Long courierId = couriers.getCourierId();
+        return Result.success(courierId);
+    }
+
 }
