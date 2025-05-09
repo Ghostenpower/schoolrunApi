@@ -2,6 +2,7 @@ package com.pzj.schoolrun.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.pzj.schoolrun.entity.Addresses;
+import com.pzj.schoolrun.model.vo.addresses.AddressInfoVO;
 import com.pzj.schoolrun.model.vo.addresses.AddressesUpdateVO;
 import com.pzj.schoolrun.model.vo.addresses.AddressesVO;
 import com.pzj.schoolrun.model.Result;
@@ -43,6 +44,12 @@ public class AddressesController extends BaseController {
         Long userId = getUserId();
         List<Addresses> list = addressesService.getByUserId(userId);
         return Result.success(PageInfo.of(list));
+    }
+
+    @GetMapping("/getAddressInfo")
+    public Result<AddressInfoVO> getAddressInfo(@RequestParam Long addressId) {
+        AddressInfoVO addressInfo = addressesService.getAddressInfoById(addressId);
+        return Result.success(addressInfo);
     }
 
     @PostMapping("/add")
