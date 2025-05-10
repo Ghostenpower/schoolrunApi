@@ -35,6 +35,7 @@ public interface IOrdersService extends IService<Orders> {
      */
     Result<?> cancelOrder(OrdersCancelVO ordersCancelVO);
     List<Orders> getByOrderIds(Long orderIds);
+    List<OrderDetailDTO> getAllOrders(Integer orderStatus);
     List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus);
-
+    Integer getOrderCountByUserId(Long userId);
 }

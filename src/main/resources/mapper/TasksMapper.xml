@@ -22,5 +22,10 @@
         <result column="images_url" property="imagesUrl" />
         <result column="price" property="price" />
     </resultMap>
-
+    <!-- src/main/resources/mapper/TaskMapper.xml -->
+    <update id="updateStatusById">
+        UPDATE task
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
 </mapper>
