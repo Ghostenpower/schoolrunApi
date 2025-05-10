@@ -27,9 +27,6 @@ public class TasksController extends BaseController {
     @Autowired
     private ITasksService tasksService;
 
-    @Autowired
-    private CouriersServiceImpl couriersService;
-
     @GetMapping("/all")
     public Result<?> allList() {
         startPage();
@@ -103,8 +100,8 @@ public class TasksController extends BaseController {
         if (tasks == null) {
             return Result.error("任务不存在");
         }
-        //状态(0=待接单,1=已接单,2=已完成,3=已取消)
-        tasks.setStatus(3);
+        //状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
+        tasks.setStatus(4);
         tasksService.updateById(tasks);
         return Result.success();
     }
@@ -115,7 +112,7 @@ public class TasksController extends BaseController {
         if (tasks == null) {
             return Result.error("任务不存在");
         }
-        //状态(0=待接单,1=已接单,2=已完成,3=已取消)
+        //状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
         tasks.setStatus(2);
         tasksService.updateById(tasks);
         return Result.success();
@@ -123,39 +120,11 @@ public class TasksController extends BaseController {
 
     @PostMapping("/acceptTask")
     public Result<?> acceptTask(@RequestParam Long taskId) {
-        Long userId = getUserId();
-
-        // 从couriers表中查询courierId
-        Couriers couriers = couriersService.query().eq("user_id", userId).one();
-        if (couriers == null) {
-            return Result.error("跑腿员信息不存在");
-        }
-        Long courierId = couriers.getCourierId();
-
-        boolean success = tasksService.updateTaskStatus(taskId, 1, courierId); // 1 表示已接单
+        boolean success = tasksService.updateTaskStatus(taskId, 1); // 1 表示已接单
         if (!success) {
             return Result.error("任务不存在");
         }
         return Result.success();
     }
-
-    //我接取的任务
-    @GetMapping("/myAccept")
-    public Result<?> myAccept() {
-        Long userId = getUserId();
-
-        // 从couriers表中查询courierId
-        Couriers couriers = couriersService.query().eq("user_id", userId).one();
-        if (couriers == null) {
-            return Result.error("跑腿员信息不存在");
-        }
-        Long courierId = couriers.getCourierId();
-
-        // 根据courierId查询任务列表
-        List<Tasks> tasksList = tasksService.getByCourierId(courierId);
-
-        return Result.success(tasksList);
-    }
-
 
 }
