@@ -14,5 +14,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CouriersMapper extends BaseMapper<Couriers> {
-
+    Long selectCourierIdByUserId(Long userId);
 }

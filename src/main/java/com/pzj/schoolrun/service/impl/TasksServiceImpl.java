@@ -41,4 +41,9 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
         return updateById(tasks);
     }
 
+    @Override
+    public List<Tasks> getByCourierId(Long courierId) {
+        return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("courier_id", courierId));
+    }
+
 }

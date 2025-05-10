@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2025-04-08
  */
 public interface ICouriersService extends IService<Couriers> {
-
+    Long getCourierIdByUserId(Long userId);
 }

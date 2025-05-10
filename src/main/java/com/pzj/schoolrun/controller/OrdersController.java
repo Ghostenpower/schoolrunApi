@@ -182,4 +182,21 @@ public class OrdersController extends BaseController {
             return Result.error(StatusCode.SYSTEM_ERROR.getCode(), e.getMessage());
         }
     }
+    @GetMapping("/getCourierIdByUserId")
+    public Result<?> getCourierIdByUserId(@RequestParam Long userId) {
+        Long courierId = couriersService.getCourierIdByUserId(userId);
+        if (courierId == null) {
+            return Result.error("未找到对应的courierId");
+        }
+        return Result.successCourierId(courierId);
+    }
+    @GetMapping("/getOrderCountByUser")
+    public Result<?> getOrderCountByUser() {
+        Long userId = getUserId();
+        if (userId == null) {
+            return Result.error(StatusCode.USER_NOT_FOUND);
+        }
+        Integer orderCount = ordersService.getOrderCountByUserId(userId);
+        return Result.success(orderCount);
+    }
 }

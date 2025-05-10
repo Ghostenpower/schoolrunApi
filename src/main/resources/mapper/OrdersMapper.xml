@@ -53,4 +53,12 @@
         </where>
         order by o.created_at desc
     </select>
+    <select id="countByUserId" resultType="int">
+        SELECT COUNT(*)
+        FROM orders o
+        JOIN tasks t ON o.task_id = t.task_id
+        WHERE t.user_id = #{userId}
+    </select>
+
+
 </mapper>

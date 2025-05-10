@@ -99,5 +99,9 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
             return Result.error("新增订单失败");
         }
     }
+    @Override
+    public Integer getOrderCountByUserId(Long userId) {
+        return ordersMapper.countByUserId(userId);
+    }
 
 }

@@ -37,5 +37,5 @@ public interface IOrdersService extends IService<Orders> {
     List<Orders> getByOrderIds(Long orderIds);
     List<OrderDetailDTO> getAllOrders(Integer orderStatus);
     List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus);
-
+    Integer getOrderCountByUserId(Long userId);
 }

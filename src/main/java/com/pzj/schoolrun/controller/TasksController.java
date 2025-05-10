@@ -27,9 +27,6 @@ public class TasksController extends BaseController {
     @Autowired
     private ITasksService tasksService;
 
-    @Autowired
-    private CouriersServiceImpl couriersService;
-
     @GetMapping("/all")
     public Result<?> allList() {
         startPage();
@@ -103,6 +100,7 @@ public class TasksController extends BaseController {
         if (tasks == null) {
             return Result.error("任务不存在");
         }
+        //状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
         tasks.setStatus(4);
         tasksService.updateById(tasks);
         return Result.success();
@@ -114,7 +112,7 @@ public class TasksController extends BaseController {
         if (tasks == null) {
             return Result.error("任务不存在");
         }
-        //状态(0=待接单,1=已接单,2=已完成,3=已取消)
+        //状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
         tasks.setStatus(2);
         tasksService.updateById(tasks);
         return Result.success();
@@ -122,15 +120,11 @@ public class TasksController extends BaseController {
 
     @PostMapping("/acceptTask")
     public Result<?> acceptTask(@RequestParam Long taskId) {
-        Long userId = getUserId();
-
         boolean success = tasksService.updateTaskStatus(taskId, 1); // 1 表示已接单
         if (!success) {
             return Result.error("任务不存在");
         }
         return Result.success();
     }
-
-
 
 }
