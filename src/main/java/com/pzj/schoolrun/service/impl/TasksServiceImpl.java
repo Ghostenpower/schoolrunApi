@@ -32,19 +32,13 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
         return tasksMapper.selectList(queryWrap);
     }
     @Override
-    public boolean updateTaskStatus(Long taskId, Integer status, Long courierId) {
+    public boolean updateTaskStatus(Long taskId, Integer status) {
         Tasks tasks = getById(taskId);
         if (tasks == null) {
             return false;
         }
         tasks.setStatus(status);
-        tasks.setCourierId(courierId);
         return updateById(tasks);
-    }
-
-    @Override
-    public List<Tasks> getByCourierId(Long courierId) {
-        return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("courier_id", courierId));
     }
 
 }

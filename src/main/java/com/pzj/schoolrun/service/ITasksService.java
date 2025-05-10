@@ -16,10 +16,5 @@ import java.util.List;
 public interface ITasksService extends IService<Tasks> {
 
     List<Tasks> getByUserId(Long userId);
-    boolean updateTaskStatus(Long taskId, Integer status, Long courierId);
-
-    /**
-     * 根据跑腿员ID查询任务列表
-     */
-    List<Tasks> getByCourierId(Long courierId);
+    boolean updateTaskStatus(Long taskId, Integer status);
 }
