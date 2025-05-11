@@ -2,10 +2,12 @@ package com.pzj.schoolrun.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.pzj.schoolrun.entity.Couriers;
+import com.pzj.schoolrun.entity.Orders;
 import com.pzj.schoolrun.entity.Tasks;
 import com.pzj.schoolrun.model.Result;
 import com.pzj.schoolrun.model.vo.tasks.TasksAddVO;
 import com.pzj.schoolrun.model.vo.tasks.TasksUpdateVO;
+import com.pzj.schoolrun.service.IOrdersService;
 import com.pzj.schoolrun.service.ITasksService;
 import com.pzj.schoolrun.service.impl.CouriersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 /**
  * <p>
  * 跑腿任务表 前端控制器
@@ -26,6 +29,10 @@ import java.util.List;
 public class TasksController extends BaseController {
     @Autowired
     private ITasksService tasksService;
+    @Autowired
+    private IOrdersService ordersService; // 注入订单服务
+    @Autowired
+    private CouriersServiceImpl couriersService;
 
     @GetMapping("/all")
     public Result<?> allList() {
@@ -100,8 +107,8 @@ public class TasksController extends BaseController {
         if (tasks == null) {
             return Result.error("任务不存在");
         }
-        //状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
-        tasks.setStatus(4);
+        //状态(0=待接单,1=已接单,2=已完成,3=已取消)
+        tasks.setStatus(3);
         tasksService.updateById(tasks);
         return Result.success();
     }
@@ -112,19 +119,67 @@ public class TasksController extends BaseController {
         if (tasks == null) {
             return Result.error("任务不存在");
         }
-        //状态(0=待接单,1=已接单,2=进行中,3=已完成,4=已取消)
+        //状态(0=待接单,1=已接单,2=已完成,3=已取消)
         tasks.setStatus(2);
         tasksService.updateById(tasks);
         return Result.success();
     }
 
+
+
     @PostMapping("/acceptTask")
     public Result<?> acceptTask(@RequestParam Long taskId) {
-        boolean success = tasksService.updateTaskStatus(taskId, 1); // 1 表示已接单
+        Long userId = getUserId();
+
+        // 从couriers表中查询courierId
+        Couriers couriers = couriersService.query().eq("user_id", userId).one();
+        if (couriers == null) {
+            return Result.error("跑腿员信息不存在");
+        }
+        Long courierId = couriers.getCourierId();
+
+        // 更新任务状态为已接单，并设置 courierId
+        boolean success = tasksService.updateTaskStatus(taskId, 1, courierId); // 1 表示已接单
         if (!success) {
             return Result.error("任务不存在");
         }
+
+        // =============================
+        // 🔧 新增：创建对应的订单记录
+        // =============================
+        Orders order = Orders.builder()
+                .taskId(taskId)
+                .courierId(courierId)
+                .orderStatus(1) // 待完成
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        boolean saveResult = ordersService.save(order);
+        if (!saveResult) {
+            return Result.error("任务接单成功但生成订单失败");
+        }
+
         return Result.success();
     }
+
+
+    //我接取的任务
+    @GetMapping("/myAccept")
+    public Result<?> myAccept() {
+        Long userId = getUserId();
+
+        // 从couriers表中查询courierId
+        Couriers couriers = couriersService.query().eq("user_id", userId).one();
+        if (couriers == null) {
+            return Result.error("跑腿员信息不存在");
+        }
+        Long courierId = couriers.getCourierId();
+
+        // 根据courierId查询任务列表
+        List<Tasks> tasksList = tasksService.getByCourierId(courierId);
+
+        return Result.success(tasksList);
+    }
+
 
 }

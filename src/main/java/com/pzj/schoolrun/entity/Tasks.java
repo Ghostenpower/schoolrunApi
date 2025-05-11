@@ -43,6 +43,7 @@ public class Tasks implements Serializable {
     private Long userId;
 
 
+
     /**
      * 任务类型(1=代取快递,2=代购餐食,3=文件打印,4=其他)
      */

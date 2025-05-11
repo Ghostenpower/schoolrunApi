@@ -103,5 +103,8 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     public Integer getOrderCountByUserId(Long userId) {
         return ordersMapper.countByUserId(userId);
     }
-
+    @Override
+    public List<Long> getOngoingOrderIdsByCourierId(Long courierId) {
+        return ordersMapper.getOngoingOrderIdsByCourierId(courierId);
+    }
 }

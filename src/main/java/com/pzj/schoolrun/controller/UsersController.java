@@ -4,6 +4,7 @@ import com.pzj.schoolrun.entity.Users;
 import com.pzj.schoolrun.model.Result;
 import com.pzj.schoolrun.model.StatusCode;
 import com.pzj.schoolrun.model.dto.UserLoginDTO;
+import com.pzj.schoolrun.model.vo.users.BalanceOperationVO;
 import com.pzj.schoolrun.model.vo.users.UserLoginVO;
 import com.pzj.schoolrun.model.vo.users.UserRegisterVO;
 import com.pzj.schoolrun.model.vo.users.UserUpdateVO;
@@ -119,4 +120,24 @@ public class UsersController extends BaseController {
     public Result<?> update(@RequestBody UserUpdateVO userUpdateVO) {
         return null;
     }
+    @PostMapping("/recharge")
+public Result<?> recharge(@RequestBody BalanceOperationVO vo) {
+    try {
+        Long userId = getUserId();
+        return usersService.rechargeBalance(userId, vo.getBalance());
+    } catch (Exception e) {
+        return Result.error("充值失败: " + e.getMessage());
+    }
+}
+
+@PostMapping("/withdraw")
+public Result<?> withdraw(@RequestBody BalanceOperationVO vo) {
+    try {
+        Long userId = getUserId();
+        return usersService.withdrawBalance(userId, vo.getBalance());
+    } catch (Exception e) {
+        return Result.error("提现失败: " + e.getMessage());
+    }
+}
+
 }

@@ -4,6 +4,8 @@ import com.pzj.schoolrun.entity.Orders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pzj.schoolrun.model.dto.orders.OrderDetailDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -22,4 +24,7 @@ public interface OrdersMapper extends BaseMapper<Orders> {
     List<OrderDetailDTO> getAllOrders(Long userId, Integer orderStatus);
 
     Integer countByUserId(Long userId);
+    @Select("SELECT order_id FROM orders WHERE courier_id = #{courierId} AND order_status = 1")
+
+    List<Long> getOngoingOrderIdsByCourierId(@Param("courierId") Long courierId);
 }

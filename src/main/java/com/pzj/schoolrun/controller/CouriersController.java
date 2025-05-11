@@ -1,6 +1,8 @@
 package com.pzj.schoolrun.controller;
 
 
+
+import com.github.benmanes.caffeine.cache.Cache;
 import com.pzj.schoolrun.entity.Couriers;
 import com.pzj.schoolrun.model.Result;
 import com.pzj.schoolrun.model.vo.couriers.CouriersVO;
@@ -24,7 +26,8 @@ public class CouriersController extends BaseController{
 
     @Autowired
     private CouriersServiceImpl couriersService;
-
+    @Autowired
+    private Cache<String, Object> caffeineCache;
     @PostMapping("/apply")
     public Result<?> apply(@RequestBody CouriersVO couriersVO) {
         Couriers couriers = Couriers.builder()
@@ -77,6 +80,19 @@ public class CouriersController extends BaseController{
         }
         Long courierId = couriers.getCourierId();
         return Result.success(courierId);
+    }
+    @PostMapping("/updateLocation")
+    public Result<?> updateCourierLocation(
+            @RequestParam Long courierId,
+            @RequestParam Double latitude,
+            @RequestParam Double longitude) {
+
+        String locationKey = "courierId:" + courierId;
+        String locationValue = latitude + "," + longitude;
+
+        caffeineCache.put(locationKey, locationValue);
+
+        return Result.success("位置更新成功");
     }
 
 }

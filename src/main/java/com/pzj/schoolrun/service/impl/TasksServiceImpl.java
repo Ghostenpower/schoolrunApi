@@ -2,10 +2,10 @@ package com.pzj.schoolrun.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pzj.schoolrun.entity.Tasks;
 import com.pzj.schoolrun.mapper.TasksMapper;
 import com.pzj.schoolrun.service.ITasksService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,7 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
         return tasksMapper.selectList(queryWrap);
     }
     @Override
-    public boolean updateTaskStatus(Long taskId, Integer status) {
+    public boolean updateTaskStatus(Long taskId, Integer status, Long courierId) {
         Tasks tasks = getById(taskId);
         if (tasks == null) {
             return false;
