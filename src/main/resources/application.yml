@@ -62,6 +62,12 @@ servlet:
     multipart:
       max-file-size: 10MB  # 单个文件最大大小
       max-request-size: 50MB  # 请求最大大小
+minio:
+  endpoint: http://localhost:9000
+  accessKey: YOUR_ACCESS_KEY
+  secretKey: YOUR_SECRET_KEY
+  bucketName: feedback-images
+
 
 web:
     resources:
