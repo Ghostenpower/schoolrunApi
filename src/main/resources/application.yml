@@ -1,4 +1,7 @@
 spring:
+  web:
+    resources:
+      static-locations: file:./uploads/, classpath:/static/
   application:
     name: code-generator
   datasource:
@@ -78,3 +81,11 @@ pagehelper:
   reasonable: true            # 分页合理化
   support-methods-arguments: true # 支持接口参数
   params: count=countSql      # count语句参数
+
+tencent:
+  cos:
+    secretId: ${TENCENT_COS_SECRET_ID}
+    secretKey: ${TENCENT_COS_SECRET_KEY}
+    region: ap-guangzhou
+    bucketName: megajam-1301211650
+    baseUrl: https://megajam-1301211650.cos.ap-guangzhou.myqcloud.com
