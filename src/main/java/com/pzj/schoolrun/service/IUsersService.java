@@ -17,4 +17,8 @@ import java.math.BigDecimal;
 public interface IUsersService extends IService<Users> {
     Result<?> rechargeBalance(Long userId, BigDecimal balance);
     Result<?> withdrawBalance(Long userId, BigDecimal balance);
+
+    Users getUserByCourierId(Long courierId);
+
+
 }

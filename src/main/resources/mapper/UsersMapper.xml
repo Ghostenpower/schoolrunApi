@@ -17,4 +17,8 @@
         <result column="balance" property="balance" />
     </resultMap>
 
+    <select id="getUserByCourierId" resultType="com.pzj.schoolrun.entity.Users">
+        select user_id,  username, phone, email, avatar_url, status from users where user_id = (select user_id from couriers where courier_id = #{courierId})
+    </select>
+
 </mapper>

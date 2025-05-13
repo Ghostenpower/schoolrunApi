@@ -12,22 +12,26 @@ import com.pzj.schoolrun.service.IUsersService;
 import com.pzj.schoolrun.util.JWT;
 import com.pzj.schoolrun.util.JwtUtil;
 import com.pzj.schoolrun.util.MD5Util;
+import com.pzj.schoolrun.util.MultiRequestBody;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * <p>
  * 用户基本信息表 前端控制器
  * </p>
  *
- * @author 
+ * @author
  * @since 2025-04-08
  */
 @RestController
 @RequestMapping("/users")
+@Slf4j
 public class UsersController extends BaseController {
 
     @Autowired
@@ -43,7 +47,7 @@ public class UsersController extends BaseController {
             Users user = usersService.lambdaQuery()
                     .eq(Users::getUsername, userLoginVO.getUsername())
                     .one();
-            
+
             if (user == null) {
                 return Result.error(StatusCode.USER_NOT_FOUND);
             }
@@ -75,6 +79,15 @@ public class UsersController extends BaseController {
         }
     }
 
+    @PostMapping("updateAvatar")
+    public Result<?> updateUserAvatar( String userAvatarUrl) {
+        Long userId = getUserId();
+        Users user = usersService.getById(userId);
+        user.setAvatarUrl(userAvatarUrl);
+        usersService.updateById(user);
+        return Result.success();
+    }
+
     @GetMapping("/getOneById")
     public Result<?> getOneById(@RequestParam Long userId) {
         Users user = usersService.getById(userId);
@@ -88,7 +101,7 @@ public class UsersController extends BaseController {
             long count = usersService.lambdaQuery()
                     .eq(Users::getUsername, userRegisterVO.getUsername())
                     .count();
-            
+
             if (count > 0) {
                 return Result.error(StatusCode.USERNAME_CONFLICT);
             }
@@ -103,7 +116,7 @@ public class UsersController extends BaseController {
             user.setEmail(userRegisterVO.getEmail());
             user.setCreatedAt(LocalDateTime.now());
             user.setUpdatedAt(LocalDateTime.now());
-            
+
             // 3. 保存用户
             boolean success = usersService.save(user);
             if (!success) {
@@ -118,26 +131,80 @@ public class UsersController extends BaseController {
 
     @PostMapping("/update")
     public Result<?> update(@RequestBody UserUpdateVO userUpdateVO) {
-        return null;
+        try {
+            Long userId = getUserId();
+            if (!Objects.equals(userId, userUpdateVO.getUserId())) {
+                return Result.error("非法操作");
+            }
+            Users user = new Users();
+            if (userUpdateVO.getUsername() != null && !userUpdateVO.getUsername().isEmpty()) {
+                user.setUsername(userUpdateVO.getUsername());
+            }
+            if (userUpdateVO.getPhone() != null && !userUpdateVO.getPhone().isEmpty()) {
+                user.setPhone(userUpdateVO.getPhone());
+            }
+            if (userUpdateVO.getEmail() != null && !userUpdateVO.getEmail().isEmpty()) {
+                user.setEmail(userUpdateVO.getEmail());
+            }
+            if (userUpdateVO.getPassword() != null && !userUpdateVO.getPassword().isEmpty()) {
+                user.setPassword(MD5Util.encrypt(userUpdateVO.getPassword()));
+            }
+            if (userUpdateVO.getAvatarUrl() != null && !userUpdateVO.getAvatarUrl().isEmpty()) {
+                user.setAvatarUrl(userUpdateVO.getAvatarUrl());
+                log.info(user.getAvatarUrl());
+            }
+            user.setUpdatedAt(LocalDateTime.now());
+            usersService.updateById(user);
+            return Result.success();
+        } catch (Exception e) {
+            return Result.error("更新失败：" + e.getMessage());
+        }
     }
-    @PostMapping("/recharge")
-public Result<?> recharge(@RequestBody BalanceOperationVO vo) {
-    try {
-        Long userId = getUserId();
-        return usersService.rechargeBalance(userId, vo.getBalance());
-    } catch (Exception e) {
-        return Result.error("充值失败: " + e.getMessage());
-    }
-}
 
-@PostMapping("/withdraw")
-public Result<?> withdraw(@RequestBody BalanceOperationVO vo) {
-    try {
-        Long userId = getUserId();
-        return usersService.withdrawBalance(userId, vo.getBalance());
-    } catch (Exception e) {
-        return Result.error("提现失败: " + e.getMessage());
+    @PostMapping("/recharge")
+    public Result<?> recharge(@RequestBody BalanceOperationVO vo) {
+        try {
+            Long userId = getUserId();
+            return usersService.rechargeBalance(userId, vo.getBalance());
+        } catch (Exception e) {
+            return Result.error("充值失败: " + e.getMessage());
+        }
     }
-}
+
+    @PostMapping("/withdraw")
+    public Result<?> withdraw(@RequestBody BalanceOperationVO vo) {
+        try {
+            Long userId = getUserId();
+            return usersService.withdrawBalance(userId, vo.getBalance());
+        } catch (Exception e) {
+            return Result.error("提现失败: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("getUserByCourierId")
+    public Result<?> getUserByCourierId(@RequestParam Long courierId) {
+        Users user = usersService.getUserByCourierId(courierId);
+        return Result.success(user);
+    }
+
+    @PostMapping("verify")
+    public Result<?> verify() {
+        Long userId = getUserId();
+        Users user = usersService.getById(userId);
+        // 4. 构建返回对象
+        UserLoginDTO userLoginDTO = new UserLoginDTO();
+        userLoginDTO.setUserId(user.getUserId());
+        userLoginDTO.setUsername(user.getUsername());
+        userLoginDTO.setPhone(user.getPhone());
+        userLoginDTO.setEmail(user.getEmail());
+        userLoginDTO.setAvatarUrl(user.getAvatarUrl());
+        userLoginDTO.setUserType(user.getUserType());
+        userLoginDTO.setStatus(user.getStatus());
+        userLoginDTO.setCreatedAt(user.getCreatedAt());
+        userLoginDTO.setUpdatedAt(user.getUpdatedAt());
+
+        return Result.success(userLoginDTO);
+    }
+
 
 }

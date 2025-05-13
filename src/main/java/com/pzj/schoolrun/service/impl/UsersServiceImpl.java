@@ -6,6 +6,7 @@ import com.pzj.schoolrun.mapper.UsersMapper;
 import com.pzj.schoolrun.model.Result;
 import com.pzj.schoolrun.model.StatusCode;
 import com.pzj.schoolrun.service.IUsersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,8 @@ import java.util.Map;
  */
 @Service
 public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements IUsersService {
+        @Autowired
+        private UsersMapper usersMapper;
 
         @Override
         @Transactional
@@ -55,6 +58,11 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
             updateById(user);
             return Result.success(Map.of("newBalance", user.getBalance()));
         }
+
+    @Override
+    public Users getUserByCourierId(Long courierId) {
+        return usersMapper.getUserByCourierId(courierId);
     }
+}
 
 
