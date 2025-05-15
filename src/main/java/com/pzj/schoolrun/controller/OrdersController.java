@@ -85,7 +85,7 @@ public class OrdersController extends BaseController {
                 .taskId(task.getTaskId())
                 .courierId(courier.getCourierId())
                 .createdAt(LocalDateTime.now())
-                .orderStatus(1) // 假设初始状态为“待完成”
+                .orderStatus(1) // 假设初始状态为“待开始”
                 .build();
 
         task.setStatus(1);
@@ -126,6 +126,54 @@ public class OrdersController extends BaseController {
         return Result.success();
     }
 
+    @PostMapping("/start")
+    public Result<?> start(@RequestBody Long orderId) {
+        try {
+            // 检查订单是否存在
+            Long userId = getUserId();
+            if (userId == null) {
+                return Result.error(StatusCode.USER_NOT_FOUND);
+            }
+
+            Orders order = ordersService.getById(orderId);
+            if (order == null) {
+                return Result.error(StatusCode.ORDER_NOT_EXIST);
+            }
+
+            // 检查任务是否存在
+            Tasks task = tasksService.getById(order.getTaskId());
+            if (task == null) {
+                return Result.error(StatusCode.TASK_NOT_EXIST);
+            }
+
+            // 校验用户是否为配送员
+            if (order.getCourierId() != null && order.getCourierId().equals(userId)) {
+                return Result.error(StatusCode.INVALID_OPERATION);
+            }
+
+            // 更新订单状态为“待完成”
+            order.setOrderStatus(2);
+            order.setCompletionTime(LocalDateTime.now());
+            boolean updateResult = ordersService.updateById(order);
+            if (!updateResult) {
+                return Result.error(StatusCode.SERVER_ERROR);
+            }
+
+            // 更新任务状态为”进行中“
+            task.setStatus(2);
+            boolean taskUpdateResult = tasksService.updateById(task);
+            if (!taskUpdateResult) {
+                return Result.error(StatusCode.SERVER_ERROR);
+            }
+
+            return Result.success();
+
+        } catch (Exception e) {
+            // 捕获异常并返回统一错误信息
+            return Result.error(StatusCode.SYSTEM_ERROR.getCode(), e.getMessage());
+        }
+    }
+
     @PostMapping("/complete")
     @Transactional // 引入事务管理
     public Result<?> complete(@RequestBody Long orderId) {
@@ -153,15 +201,15 @@ public class OrdersController extends BaseController {
             }
 
             // 校验订单状态
-            if (order.getOrderStatus() == null || order.getOrderStatus() == 2) {
+            if (order.getOrderStatus() == null || order.getOrderStatus() == 3) {
                 return Result.error(StatusCode.ORDER_COMPLETED); // 替换硬编码字符串
             }
-            if (order.getOrderStatus() == 3) {
+            if (order.getOrderStatus() == 4) {
                 return Result.error(StatusCode.ORDER_CANCELED); // 替换硬编码字符串
             }
 
             // 更新订单状态
-            order.setOrderStatus(2);
+            order.setOrderStatus(3);
             order.setCompletionTime(LocalDateTime.now());
             boolean updateResult = ordersService.updateById(order);
             if (!updateResult) {

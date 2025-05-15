@@ -13,7 +13,7 @@ public class JWT {
     private static final byte[] keyBytes = Base64.getEncoder().encode(signKey.getBytes());
     private static final SecretKeySpec secretKey = new SecretKeySpec(keyBytes, SignatureAlgorithm.HS256.getJcaName());
     public static String createJwt(Map<String, Object> claims) {
-        long expire = 4320000L;
+        long expire = 604800000L;
         return Jwts.builder()
                 .addClaims(claims)
                 .signWith(secretKey, SignatureAlgorithm.HS256)
