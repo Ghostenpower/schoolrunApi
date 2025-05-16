@@ -60,6 +60,39 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         }
 
     @Override
+    @Transactional
+    public Result<?> payCommission(Long userId, BigDecimal amount) {
+        Users user = getById(userId);
+        if (user == null) return Result.error(StatusCode.USER_NOT_FOUND);
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) return Result.error("金额必须大于0");
+        if (user.getBalance().compareTo(amount) < 0) return Result.error("余额不足，请先充值！");
+
+        user.setBalance(user.getBalance().subtract(amount));
+        user.setUpdatedAt(LocalDateTime.now());
+        updateById(user);
+        return Result.success(Map.of("newBalance", user.getBalance()));
+    }
+
+    @Override
+    @Transactional
+    public Result<?> commissionReceived(Long userId, BigDecimal amount) {
+        Users user = getById(userId);
+        if (user == null) return Result.error(StatusCode.USER_NOT_FOUND);
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) return Result.error("金额必须大于0");
+
+        // 确保余额字段不为null
+        if (user.getBalance() == null) {
+            user.setBalance(BigDecimal.ZERO);
+        }
+
+        user.setBalance(user.getBalance().add(amount));
+        user.setUpdatedAt(LocalDateTime.now());
+        updateById(user);
+        return Result.success(Map.of("newBalance", user.getBalance()));
+    }
+
+
+    @Override
     public Users getUserByCourierId(Long courierId) {
         return usersMapper.getUserByCourierId(courierId);
     }
