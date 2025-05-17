@@ -13,11 +13,13 @@ import com.pzj.schoolrun.model.vo.orders.OrdersUpdateVO;
 import com.pzj.schoolrun.service.IOrdersService;
 import com.pzj.schoolrun.service.ICouriersService;
 import com.pzj.schoolrun.service.ITasksService;
+import com.pzj.schoolrun.service.IUsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,6 +41,8 @@ public class OrdersController extends BaseController {
     private ICouriersService couriersService;
     @Autowired
     private ITasksService tasksService;
+    @Autowired
+    private IUsersService usersService;
 
     @GetMapping("/getList")
     public Result<?> list(@RequestParam Integer orderStatus) {
@@ -222,6 +226,15 @@ public class OrdersController extends BaseController {
             if (!taskUpdateResult) {
                 return Result.error(StatusCode.SERVER_ERROR);
             }
+
+            // =============================
+            // 💸 新增：发放佣金给跑腿员
+            // =============================
+            BigDecimal commission = task.getPrice(); // 获取任务佣金
+
+            Long courierUserId = userId; // 获取跑腿员用户ID
+
+            usersService.commissionReceived(courierUserId, commission);
 
             return Result.success();
 

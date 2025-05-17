@@ -19,6 +19,6 @@ public interface IUsersService extends IService<Users> {
     Result<?> withdrawBalance(Long userId, BigDecimal balance);
 
     Users getUserByCourierId(Long courierId);
-
-
+    Result<?> payCommission(Long userId, BigDecimal amount);
+    Result<?> commissionReceived(Long userId, BigDecimal amount);
 }

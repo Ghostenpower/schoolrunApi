@@ -5,9 +5,10 @@
 <mapper namespace="com.pzj.schoolrun.mapper.FeedbackMapper">
 
   <insert id="insert" parameterType="com.pzj.schoolrun.entity.Feedback">
-    INSERT INTO feedback (suggestion, contact, image_url)
-    VALUES (#{suggestion}, #{contact}, #{imageUrl})
+    INSERT INTO feedback (suggestion, contact, images_url, create_time)
+    VALUES (#{suggestion}, #{contact}, #{imagesUrl}, #{createTime})
   </insert>
+
 
   <select id="selectAll" resultType="com.pzj.schoolrun.entity.Feedback">
     SELECT * FROM feedback
