@@ -46,4 +46,8 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
         return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("courier_id", courierId));
     }
 
+    @Override
+    public List<Tasks> searchByTitle(String keyword) {
+        return tasksMapper.selectList(new QueryWrapper<Tasks>().like("title", keyword));
+    }
 }

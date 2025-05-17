@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -233,5 +235,17 @@ public class TasksController extends BaseController {
         return Result.success(tasksList);
     }
 
+    @GetMapping("/search")
+    public Result<?> searchByTitle(@RequestParam String keyword) {
+        // 手动解码，防止前端传递的是编码字符串
+        try {
+            keyword = URLDecoder.decode(keyword, StandardCharsets.UTF_8.name());
+        } catch (Exception e) {
+            // 解码失败也不影响，继续用原始keyword
+        }
+        startPage();
+        List<Tasks> tasksList = tasksService.searchByTitle(keyword);
+        return Result.success(PageInfo.of(tasksList));
+    }
 
 }

@@ -2,6 +2,7 @@ package com.pzj.schoolrun.controller;
 
 import com.pzj.schoolrun.entity.Feedback;
 import com.pzj.schoolrun.model.Result;
+import com.pzj.schoolrun.model.vo.feedback.FeedbackVO;
 import com.pzj.schoolrun.service.IFeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,27 +31,24 @@ public class FeedbackController {
 
 
     @PostMapping("/submit")
-    public Result<?> submitFeedback(
-            @RequestPart("feedback") Feedback feedback,
-            @RequestParam("file") MultipartFile file) {
-
+    public Result<?> submitFeedback(@RequestBody FeedbackVO feedbackVo) {
         try {
-            // 将上传的图片转为字节数组
-            byte[] imageData = file.getBytes();
-            feedback.setImageData(imageData);
-
+            Feedback feedback = Feedback.builder()
+                    .suggestion(feedbackVo.getSuggestion())
+                    .contact(feedbackVo.getContact())
+                    .imagesUrl(feedbackVo.getImagesUrl())
+                    .createTime(java.time.LocalDateTime.now())
+                    .build();
             boolean success = feedbackService.submitFeedback(feedback);
             if (success) {
-                return Result.success("反馈及图片提交成功");
+                return Result.success("反馈提交成功");
             } else {
                 return Result.error("反馈提交失败");
             }
         } catch (Exception e) {
-            return Result.error("图片处理失败：" + e.getMessage());
+            return Result.error("反馈提交异常：" + e.getMessage());
         }
     }
-
-
 
 
 

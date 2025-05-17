@@ -22,4 +22,6 @@ public interface ITasksService extends IService<Tasks> {
      * 根据跑腿员ID查询任务列表
      */
     List<Tasks> getByCourierId(Long courierId);
+
+    List<Tasks> searchByTitle(String keyword);
 }

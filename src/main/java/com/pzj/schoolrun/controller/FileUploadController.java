@@ -20,7 +20,7 @@ import java.nio.file.Files;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/file")
 public class FileUploadController {
 
     private final COSClient cosClient;
