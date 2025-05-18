@@ -222,19 +222,11 @@ public class OrdersController extends BaseController {
 
             // 更新任务状态
             task.setStatus(3);
+            task.setDeliveryStatus(1);//配送员已完成任务，等待用户确认
             boolean taskUpdateResult = tasksService.updateById(task);
             if (!taskUpdateResult) {
                 return Result.error(StatusCode.SERVER_ERROR);
             }
-
-            // =============================
-            // 💸 新增：发放佣金给跑腿员
-            // =============================
-            BigDecimal commission = task.getPrice(); // 获取任务佣金
-
-            Long courierUserId = userId; // 获取跑腿员用户ID
-
-            usersService.commissionReceived(courierUserId, commission);
 
             return Result.success();
 
