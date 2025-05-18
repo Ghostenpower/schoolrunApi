@@ -83,6 +83,7 @@ public class TasksController extends BaseController {
                     .price(commission)
                     .status(0)
                     .paymentStatus(0)
+                    .deliveryStatus(0)
                     .remark(tasksAddVO.getRemark())
                     .createdAt(LocalDateTime.now())
                     .updatedAt(LocalDateTime.now())
@@ -247,5 +248,47 @@ public class TasksController extends BaseController {
         List<Tasks> tasksList = tasksService.searchByTitle(keyword);
         return Result.success(PageInfo.of(tasksList));
     }
+
+    /**
+     * 确认收货接口
+     * @param taskId 任务ID
+     * @return Result<?>
+     */
+    @PostMapping("/confirmDelivery")
+    public Result<?> confirmDelivery(@RequestParam Long taskId) {
+        try {
+            // 获取任务详情
+            Tasks task = tasksService.getById(taskId);
+            if (task == null) {
+                return Result.error("任务不存在");
+            }
+
+            // 检查任务是否已完成
+            if (!task.getStatus().equals(3)) { // 3 表示已完成
+                return Result.error("任务未完成，无法确认收货");
+            }
+
+            // 更新收货状态为 2（已收货）
+            task.setDeliveryStatus(2); // 2 表示用户已收货
+
+            // 保存更新后的任务状态
+            tasksService.updateById(task);
+
+            // =============================
+            // 💰 发放佣金给跑腿员
+            // =============================
+            BigDecimal commission = task.getPrice(); // 获取任务佣金
+            Long courierUserId = task.getUserId();   // 假设发布者即跑腿员，根据你的业务逻辑调整
+
+            // 调用服务发放佣金
+            usersService.commissionReceived(courierUserId, commission);
+
+            return Result.success("收货确认成功，佣金已发放");
+
+        } catch (Exception e) {
+            return Result.error("确认收货失败: " + e.getMessage());
+        }
+    }
+
 
 }

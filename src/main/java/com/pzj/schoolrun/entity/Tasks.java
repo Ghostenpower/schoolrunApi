@@ -118,4 +118,9 @@ public class Tasks implements Serializable {
      * 图片列表url(逗号分隔)
      */
     private String imagesUrl;
+
+    /**
+     * 收货状态
+     */
+    private Integer deliveryStatus;
 }
