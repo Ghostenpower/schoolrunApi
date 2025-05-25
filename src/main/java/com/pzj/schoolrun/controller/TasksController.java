@@ -291,10 +291,16 @@ public class TasksController extends BaseController {
                     .eq(Orders::getTaskId, taskId)
                     .orderByDesc(Orders::getCreatedAt)
                     .last("LIMIT 1"));
-            Long courierUserId = order.getCourierId();
+            Long courierId = order.getCourierId();
+
+            Couriers couriers = couriersService.getById(courierId);
+            if (couriers == null) {
+                return Result.error("跑腿员不存在");
+            }
+            Long cuserId = couriers.getUserId();
 
             // 调用服务发放佣金
-            usersService.commissionReceived(courierUserId, commission);
+            usersService.commissionReceived(cuserId, commission);
 
             return Result.success("收货确认成功，佣金已发放");
 
