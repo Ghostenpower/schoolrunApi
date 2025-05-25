@@ -1,5 +1,7 @@
 package com.pzj.schoolrun.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageInfo;
 import com.pzj.schoolrun.entity.Couriers;
 import com.pzj.schoolrun.entity.Orders;
@@ -44,6 +46,13 @@ public class TasksController extends BaseController {
     public Result<?> allList() {
         startPage();
         List<Tasks> list = tasksService.list();
+        return Result.success(PageInfo.of(list));
+    }
+
+    @PostMapping("/getListByStatus")
+    public Result<?> getListByStatus(Integer taskStatus,Integer tasksType) {
+        startPage();
+        List<Tasks> list = tasksService.getByTaskStatus(taskStatus, tasksType);
         return Result.success(PageInfo.of(list));
     }
 
@@ -278,7 +287,11 @@ public class TasksController extends BaseController {
             // 💰 发放佣金给跑腿员
             // =============================
             BigDecimal commission = task.getPrice(); // 获取任务佣金
-            Long courierUserId = task.getUserId();   // 假设发布者即跑腿员，根据你的业务逻辑调整
+            Orders order = ordersService.getOne(new LambdaQueryWrapper<Orders>()
+                    .eq(Orders::getTaskId, taskId)
+                    .orderByDesc(Orders::getCreatedAt)
+                    .last("LIMIT 1"));
+            Long courierUserId = order.getCourierId();
 
             // 调用服务发放佣金
             usersService.commissionReceived(courierUserId, commission);

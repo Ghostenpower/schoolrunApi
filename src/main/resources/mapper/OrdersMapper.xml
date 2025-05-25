@@ -55,9 +55,8 @@
     </select>
     <select id="countByUserId" resultType="int">
         SELECT COUNT(*)
-        FROM orders o
-        JOIN tasks t ON o.task_id = t.task_id
-        WHERE t.user_id = #{userId}
+        FROM orders
+        WHERE courier_id = (select courier_id from couriers where user_id = #{userId})
     </select>
     <select id="getOngoingOrderIdsByCourierId" resultType="Long">
         SELECT order_id

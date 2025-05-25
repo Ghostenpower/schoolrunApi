@@ -24,4 +24,6 @@ public interface ITasksService extends IService<Tasks> {
     List<Tasks> getByCourierId(Long courierId);
 
     List<Tasks> searchByTitle(String keyword);
+
+    List<Tasks> getByTaskStatus(Integer taskStatus, Integer tasksType);
 }

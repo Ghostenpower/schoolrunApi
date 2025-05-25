@@ -21,6 +21,7 @@
         <result column="updated_at" property="updatedAt" />
         <result column="images_url" property="imagesUrl" />
         <result column="price" property="price" />
+        <result column="delivery_status" property="deliveryStatus" />
     </resultMap>
     <!-- src/main/resources/mapper/TaskMapper.xml -->
     <update id="updateStatusById">
@@ -28,4 +29,11 @@
         SET status = #{status}
         WHERE id = #{id}
     </update>
+
+    <select id="getByTaskStatus" resultType="com.pzj.schoolrun.entity.Tasks">
+            SELECT *
+            FROM tasks
+            WHERE status = #{taskStatus}
+            ORDER BY created_at DESC
+    </select>
 </mapper>

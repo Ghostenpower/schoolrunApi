@@ -1,0 +1,58 @@
+[33mf8b920c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m 修改bug
+[33mfd79e5c[m 修复已知bug
+[33m0edc153[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mtemp[m[33m)[m Merge pull request #11 from Ghostenpower/dev-hdt
+[33md9caf39[m 新增用户确认收货接口
+[33m8af5939[m Merge pull request #10 from Ghostenpower/dev-hdt
+[33m68f6a2a[m 实现搜索接口，修复反馈接口bug
+[33m48b3117[m Merge pull request #9 from Ghostenpower/dev-hdt
+[33m14c7e00[m 实现搜索接口，修复反馈接口bug
+[33m9cb5bbd[m Merge remote-tracking branch 'refs/remotes/origin/dev' into dev-hdt
+[33mfed40d9[m 实现支付佣金和佣金到账功能
+[33m9df4910[m Merge pull request #8 from Ghostenpower/dev-hdt
+[33ma7440e2[m 修改令牌时间、订单、任务有小改动
+[33mcfaa05a[m 新增头像修改功能，骑手申请功能
+[33m8eaa674[m[33m ([m[1;31morigin/pzj[m[33m, [m[1;32mpzj[m[33m)[m Merge branch 'temp' into dev
+[33m01deabb[m update:更新图片上传到云端
+[33mc7c1abe[m[33m ([m[1;31morigin/feature/lcz123[m[33m)[m ‘完成意见反馈功能’
+[33m939f613[m ‘完成意见反馈功能’
+[33mf1956d3[m ‘日志’
+[33m1063db5[m[33m ([m[1;31morigin/feature/lyp0423[m[33m, [m[1;32mlyp[m[33m)[m ‘acceptTask函数中在接受任务时同步生成相应的订单和余额的充值与提现函数获取骑手位置获取接口’
+[33maf768ff[m Merge pull request #7 from Ghostenpower/dev-hdt
+[33m4a19017[m 修复了任务管理接口的一些bug
+[33mbf26a3c[m 修复了任务管理接口的一些bug
+[33mbcc1487[m[33m ([m[1;31morigin/feature/ljj0423[m[33m)[m ‘查看该用户订单数量的函数’
+[33mff1c66c[m Merge pull request #6 from Ghostenpower/dev-hdt
+[33m3b270df[m API改动：地址、跑腿员、任务等模块
+[33m613cded[m API改动：地址、跑腿员、任务等模块
+[33me4ec36b[m Merge pull request #5 from Ghostenpower/feature/lyp0423
+[33m6ca56fb[m ‘修改任务状态和上传图片’
+[33m54b2825[m ‘根据userId获取courierId’
+[33m7df0121[m 完善合并
+[33m35aaad0[m[33m ([m[1;31morigin/lyp0423[m[33m)[m 合并代码
+[33md15403e[m 更新
+[33m5c90940[m Merge branch 'feature/lyp0423' of https://github.com/Ghostenpower/schoolrunApi into lyp0423
+[33m4f0234b[m Merge pull request #4 from Ghostenpower/feature/task-management
+[33m1ab259a[m 修复了任务管理接口的部分bug
+[33m288b4d5[m update
+[33md8da6e7[m 修改
+[33m2c6bd1a[m 完善订单控制
+[33m99e02ef[m 更新订单控制
+[33m9d7afe8[m 合并
+[33m6ca4753[m[33m ([m[1;31morigin/feature/addresses_and_couriers[m[33m)[m 更新
+[33m081e091[m 更新
+[33m1e371e1[m[33m ([m[1;31morigin/feature/ThreadLocal[m[33m)[m 删除UserContext
+[33mb9809c7[m 完善了ThreadLocal，解决了获取不到用户ID的缺陷
+[33mab06384[m 完善了ThreadLocal，解决了获取不到用户ID的缺陷
+[33mc0d64d3[m update
+[33mf2833ca[m 完善了系统，修正了Users余额和Tasks金额字段的映射
+[33m83617cd[m update:更新登录注册
+[33m0993c33[m[33m ([m[1;31morigin/feature/Order-Management-1[m[33m)[m 手动合并Order-Management
+[33m60bb349[m[33m ([m[1;31morigin/feature/Login_and_Register[m[33m)[m 实现登录注册方法
+[33m1744539[m[33m ([m[1;32mall[m[33m)[m Merge pull request #3 from Ghostenpower/feature/task-management
+[33m69c1f60[m[33m ([m[1;31morigin/main[m[33m)[m Merge pull request #2 from Ghostenpower/revert-1-feature/task-management
+[33mbdfc32e[m Revert "实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表"
+[33m645c14e[m Merge pull request #1 from Ghostenpower/feature/task-management
+[33mc76db1b[m[33m ([m[1;31morigin/feature/task-management[m[33m)[m 实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表
+[33m828860f[m update couriers fun delete
+[33m7d54e3d[m[33m ([m[1;32mmain[m[33m)[m add readme
+[33m1f5f233[m first commit

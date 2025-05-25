@@ -50,4 +50,14 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
     public List<Tasks> searchByTitle(String keyword) {
         return tasksMapper.selectList(new QueryWrapper<Tasks>().like("title", keyword));
     }
+
+    @Override
+    public List<Tasks> getByTaskStatus(Integer taskStatus, Integer tasksType) {
+        //使用QueryWrapper，倒序输出
+        if (tasksType == -1){
+            return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("status", taskStatus).orderByDesc("created_at"));
+        }else{
+            return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("status", taskStatus).eq("task_type", tasksType).orderByDesc("created_at"));
+        }
+    }
 }

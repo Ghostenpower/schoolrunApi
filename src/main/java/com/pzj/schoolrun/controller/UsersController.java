@@ -133,10 +133,12 @@ public class UsersController extends BaseController {
     public Result<?> update(@RequestBody UserUpdateVO userUpdateVO) {
         try {
             Long userId = getUserId();
+
             if (!Objects.equals(userId, userUpdateVO.getUserId())) {
                 return Result.error("非法操作");
             }
             Users user = new Users();
+            user.setUserId(userUpdateVO.getUserId());
             if (userUpdateVO.getUsername() != null && !userUpdateVO.getUsername().isEmpty()) {
                 user.setUsername(userUpdateVO.getUsername());
             }
@@ -154,6 +156,7 @@ public class UsersController extends BaseController {
                 log.info(user.getAvatarUrl());
             }
             user.setUpdatedAt(LocalDateTime.now());
+            log.info("User ID: {}, Username: {}, Phone: {}", user.getUserId(), user.getUsername(), user.getPhone());
             usersService.updateById(user);
             return Result.success();
         } catch (Exception e) {
