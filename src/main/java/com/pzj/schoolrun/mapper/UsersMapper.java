@@ -16,4 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UsersMapper extends BaseMapper<Users> {
 
     Users getUserByCourierId(Long courierId);
+
+    Users getCourierUserInfoByTaskId(Long taskId);
 }

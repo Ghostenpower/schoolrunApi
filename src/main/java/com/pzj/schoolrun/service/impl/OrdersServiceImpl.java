@@ -65,6 +65,7 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
 
         // 更新订单状态为“已取消”
         order.setOrderStatus(4);
+        order.setUpdatedAt(LocalDateTime.now());
 
         // 设置取消时间为当前时间
         order.setCancelTime(LocalDateTime.now());

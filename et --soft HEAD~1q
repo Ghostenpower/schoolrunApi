@@ -1,0 +1,411 @@
+[33mcommit 999a511326147fbc4350d6d5c9d236b9aa171d5c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon May 26 12:48:51 2025 +0800
+
+    更新
+
+[33mcommit e68db2ad0b463782c5cb247d43e75d03877a7362[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon May 26 12:47:52 2025 +0800
+
+    更新
+
+[33mcommit b9ae2e3102ec5122a0c95a03c65ef0b0750d2769[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sun May 25 20:55:33 2025 +0800
+
+    修复订单取消bug
+
+[33mcommit e80861b89b0502a60625c9f39f45e20bedfc881e[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sun May 25 17:16:40 2025 +0800
+
+    修复用户确认后佣金未到账问题
+
+[33mcommit a7808fdf80268cedbe2cd75b6130e5e648ece823[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun May 25 10:15:42 2025 +0800
+
+    修复已知bug
+
+[33mcommit 3a917d2d56dbeef585ca52b287f526b327eaedff[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun May 25 10:11:09 2025 +0800
+
+    修复已知bug
+
+[33mcommit 0edc153496702bff4988be0bca709d54a57b55b9[m[33m ([m[1;32mtemp[m[33m)[m
+Merge: 8af5939 d9caf39
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Sun May 18 22:41:10 2025 +0800
+
+    Merge pull request #11 from Ghostenpower/dev-hdt
+    
+    新增用户确认收货接口
+
+[33mcommit d9caf39da6c07516fe5ac3471df1a3850931d73b[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sun May 18 22:39:03 2025 +0800
+
+    新增用户确认收货接口
+
+[33mcommit 8af5939d5e2c5bf22a6494882eb54bcaf260e586[m
+Merge: 48b3117 68f6a2a
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Sat May 17 17:15:22 2025 +0800
+
+    Merge pull request #10 from Ghostenpower/dev-hdt
+    
+    补充feedbackVO
+
+[33mcommit 68f6a2a20deded1ed6a9050ad80cee76c3d2f75c[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sat May 17 17:06:52 2025 +0800
+
+    实现搜索接口，修复反馈接口bug
+
+[33mcommit 48b3117bc4847a91b7c49907c9a6e469699433e0[m
+Merge: 9df4910 14c7e00
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Sat May 17 16:51:20 2025 +0800
+
+    Merge pull request #9 from Ghostenpower/dev-hdt
+    
+    实现支付佣金和佣金到账功能
+
+[33mcommit 14c7e005fe4db0ef0639ffe2516ee6042f9d91fb[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sat May 17 16:48:46 2025 +0800
+
+    实现搜索接口，修复反馈接口bug
+
+[33mcommit 9cb5bbdf32177aa90fada317eb9a9d08583419ff[m
+Merge: fed40d9 9df4910
+Author: 皓月溪 <499886941@qq.com>
+Date:   Fri May 16 22:45:55 2025 +0800
+
+    Merge remote-tracking branch 'refs/remotes/origin/dev' into dev-hdt
+
+[33mcommit fed40d99adc1bc3b910c4affcbc41ca555320d0e[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Fri May 16 17:59:41 2025 +0800
+
+    实现支付佣金和佣金到账功能
+
+[33mcommit 9df4910bef4ff5f59a86ca78d8684eb30a34727a[m
+Merge: cfaa05a a7440e2
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Fri May 16 00:10:05 2025 +0800
+
+    Merge pull request #8 from Ghostenpower/dev-hdt
+    
+    修改令牌时间、订单、任务有小改动
+
+[33mcommit a7440e2e70ceb3a077294d1a356c5987669ab1eb[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Fri May 16 00:07:52 2025 +0800
+
+    修改令牌时间、订单、任务有小改动
+
+[33mcommit cfaa05a32f659da0d43a91468715472301d0d1d6[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Tue May 13 18:18:43 2025 +0800
+
+    新增头像修改功能，骑手申请功能
+
+[33mcommit 8eaa6745ce620823cfd6d7ba6938e9be906fd3e8[m[33m ([m[1;31morigin/pzj[m[33m, [m[1;32mpzj[m[33m)[m
+Merge: 01deabb c7c1abe
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon May 12 22:32:54 2025 +0800
+
+    Merge branch 'temp' into dev
+
+[33mcommit 01deabb3620b4e80d880f3b7e7308464fb3a1e7d[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon May 12 22:31:36 2025 +0800
+
+    update:更新图片上传到云端
+
+[33mcommit c7c1abe9387ecf020cd8c04b8efbd70728832334[m[33m ([m[1;31morigin/feature/lcz123[m[33m)[m
+Author: lcz <643760742@qq.com>
+Date:   Mon May 12 22:02:16 2025 +0800
+
+    ‘完成意见反馈功能’
+
+[33mcommit 939f6138085758d65c3d2a66266a2324c7190208[m
+Author: lcz <643760742@qq.com>
+Date:   Mon May 12 21:58:41 2025 +0800
+
+    ‘完成意见反馈功能’
+
+[33mcommit f1956d38e74ba5861a7de1578a74889408985b07[m
+Author: lcz <643760742@qq.com>
+Date:   Mon May 12 21:28:30 2025 +0800
+
+    ‘日志’
+
+[33mcommit 1063db521083e7e17a3e1504e4dc64931dca6ab8[m[33m ([m[1;31morigin/feature/lyp0423[m[33m, [m[1;32mlyp[m[33m)[m
+Author: lan-yuanpei <3108503261@qq.com>
+Date:   Sun May 11 17:33:23 2025 +0800
+
+    ‘acceptTask函数中在接受任务时同步生成相应的订单和余额的充值与提现函数获取骑手位置获取接口’
+
+[33mcommit af768ff4a901579f489ae3990e72200896394398[m
+Merge: bcc1487 4a19017
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Sun May 11 04:45:16 2025 +0800
+
+    Merge pull request #7 from Ghostenpower/dev-hdt
+    
+    修复了任务管理接口的一些bug
+
+[33mcommit 4a19017f44ad7c1c0e3c7a4141dab75eca4f07e3[m
+Merge: bf26a3c bcc1487
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sun May 11 04:41:18 2025 +0800
+
+    修复了任务管理接口的一些bug
+
+[33mcommit bf26a3cc2beae0fa9c9950c0b450b3de84360ba2[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Sun May 11 04:08:21 2025 +0800
+
+    修复了任务管理接口的一些bug
+
+[33mcommit bcc148764470cb735a61209087c8413131d468f7[m[33m ([m[1;31morigin/feature/ljj0423[m[33m)[m
+Merge: 54b2825 ff1c66c
+Author: ljj <944593181@qq.com>
+Date:   Sat May 10 14:43:10 2025 +0800
+
+    ‘查看该用户订单数量的函数’
+
+[33mcommit ff1c66c3186212c7c589cd04f4f53d24d35639ba[m
+Merge: e4ec36b 613cded
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Fri May 9 21:56:31 2025 +0800
+
+    Merge pull request #6 from Ghostenpower/dev-hdt
+    
+    API改动：地址、跑腿员、任务等模块
+
+[33mcommit 3b270dfb7d59e96d71108031e1202846c45c5533[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Fri May 9 21:43:22 2025 +0800
+
+    API改动：地址、跑腿员、任务等模块
+
+[33mcommit 613cdede23c37bb5c6e6fc88304302f4a947af5b[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Fri May 9 21:43:22 2025 +0800
+
+    API改动：地址、跑腿员、任务等模块
+
+[33mcommit e4ec36ba1034b56dc0bbc6523771ec3a5f07e1a6[m
+Merge: 7df0121 6ca56fb
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Tue May 6 16:15:35 2025 +0800
+
+    Merge pull request #5 from Ghostenpower/feature/lyp0423
+    
+    ‘修改任务状态和上传图片’
+
+[33mcommit 6ca56fb30bc6678798bb43d46815d3590ada0078[m
+Author: lan-yuanpei <3108503261@qq.com>
+Date:   Tue May 6 13:25:31 2025 +0800
+
+    ‘修改任务状态和上传图片’
+
+[33mcommit 54b2825e1e64f483e330151af8bb142f0c778a5f[m
+Author: ljj <944593181@qq.com>
+Date:   Fri Apr 25 18:37:39 2025 +0800
+
+    ‘根据userId获取courierId’
+
+[33mcommit 7df01217cc84645a4bf869b640f675c4f8879a21[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Thu Apr 24 20:32:45 2025 +0800
+
+    完善合并
+
+[33mcommit 35aaad0716dc728cc1d676351f8bc66bb58e1034[m[33m ([m[1;31morigin/lyp0423[m[33m)[m
+Merge: d15403e 288b4d5
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Thu Apr 24 00:17:36 2025 +0800
+
+    合并代码
+
+[33mcommit d15403efd6259697eb32c955f3d2455e0e8185e5[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Thu Apr 24 00:04:42 2025 +0800
+
+    更新
+
+[33mcommit 5c90940aff3338b54b31a4628ac2ec9cbe3361c5[m
+Merge: 4f0234b d8da6e7
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Thu Apr 24 00:01:29 2025 +0800
+
+    Merge branch 'feature/lyp0423' of https://github.com/Ghostenpower/schoolrunApi into lyp0423
+
+[33mcommit 4f0234b86a6fda20c5b422dbea3e10a58fe8cea2[m
+Merge: 2c6bd1a 1ab259a
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Wed Apr 23 23:54:33 2025 +0800
+
+    Merge pull request #4 from Ghostenpower/feature/task-management
+    
+    修复了任务管理接口的部分bug并将代码合并到dev分支
+
+[33mcommit 1ab259abf9c8f79bed11b1d2e8398aa5eae50af8[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Wed Apr 23 23:50:44 2025 +0800
+
+    修复了任务管理接口的部分bug
+
+[33mcommit 288b4d51293d96ca0725ee5672ce3dfc3aa1346d[m
+Author: ljj <944593181@qq.com>
+Date:   Wed Apr 23 23:37:39 2025 +0800
+
+    update
+
+[33mcommit d8da6e72e10a760531328badf601722ee9386430[m
+Merge: 69c1f60 2c6bd1a
+Author: lan-yuanpei <3108503261@qq.com>
+Date:   Wed Apr 23 23:31:05 2025 +0800
+
+    修改
+
+[33mcommit 2c6bd1abc92fb98422d0d7494e9e4c71d9d54ea3[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Tue Apr 22 14:42:01 2025 +0800
+
+    完善订单控制
+
+[33mcommit 99e02ef135e6d18f0ce1a0cce000c38cc0098901[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Tue Apr 22 14:21:14 2025 +0800
+
+    更新订单控制
+
+[33mcommit 9d7afe8887124b5eda178a503260ff3f4b9d6adc[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon Apr 21 23:45:10 2025 +0800
+
+    合并
+
+[33mcommit 6ca4753137551e0f74c95c397a63f0b0e506c22d[m[33m ([m[1;31morigin/feature/addresses_and_couriers[m[33m)[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon Apr 21 23:25:35 2025 +0800
+
+    更新
+
+[33mcommit 081e091da2f186985987c6b71effe0afde63a7ac[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 18:20:04 2025 +0800
+
+    更新
+
+[33mcommit 1e371e198b856ae86fcfe70be99c5cd16d357a4b[m[33m ([m[1;31morigin/feature/ThreadLocal[m[33m)[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 08:32:46 2025 +0800
+
+    删除UserContext
+
+[33mcommit b9809c789cc2ddc33d2fb573495b15b8f3222e10[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 08:31:39 2025 +0800
+
+    完善了ThreadLocal，解决了获取不到用户ID的缺陷
+
+[33mcommit ab06384c50edcee6265f3e51904ea0261e3bcc98[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 08:31:01 2025 +0800
+
+    完善了ThreadLocal，解决了获取不到用户ID的缺陷
+
+[33mcommit c0d64d32522ba29949ce7480a72ef65c93dc1b60[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 00:40:11 2025 +0800
+
+    update
+
+[33mcommit f2833cace5203b798e9b7a5747f478874b8a20cc[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 00:36:13 2025 +0800
+
+    完善了系统，修正了Users余额和Tasks金额字段的映射
+
+[33mcommit 83617cd06bf8e00902d123cabcf795ab1d6d947f[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 00:16:42 2025 +0800
+
+    update:更新登录注册
+
+[33mcommit 0993c33aab9dd8fe4559ba644de981c967e786c5[m[33m ([m[1;31morigin/feature/Order-Management-1[m[33m)[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sun Apr 20 00:06:23 2025 +0800
+
+    手动合并Order-Management
+
+[33mcommit 60bb349f195c2a75c72f7550ba3d65e91c1a3f2c[m[33m ([m[1;31morigin/feature/Login_and_Register[m[33m)[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Sat Apr 19 17:17:06 2025 +0800
+
+    实现登录注册方法
+
+[33mcommit 1744539f1281d7fafd12b0882cf86968505582c9[m[33m ([m[1;32mall[m[33m)[m
+Merge: 828860f c76db1b
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Wed Apr 16 17:06:42 2025 +0800
+
+    Merge pull request #3 from Ghostenpower/feature/task-management
+    
+    实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表
+
+[33mcommit 69c1f604204706ce8cbd8a1c5e82416df4bc511a[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: 645c14e bdfc32e
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Wed Apr 16 17:04:04 2025 +0800
+
+    Merge pull request #2 from Ghostenpower/revert-1-feature/task-management
+    
+    Revert "实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表"
+
+[33mcommit bdfc32e0126275471c439099ee6891b7ca8cadb2[m
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Wed Apr 16 17:03:22 2025 +0800
+
+    Revert "实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表"
+
+[33mcommit 645c14eaaea4aae06835fde7bbd78ea5a4ecf94f[m
+Merge: 7d54e3d c76db1b
+Author: MoonnXi <164978250+MoonnXi@users.noreply.github.com>
+Date:   Wed Apr 16 16:58:08 2025 +0800
+
+    Merge pull request #1 from Ghostenpower/feature/task-management
+    
+    实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表
+
+[33mcommit c76db1b56b7733e09e88453e697a0567cc92a8eb[m[33m ([m[1;31morigin/feature/task-management[m[33m)[m
+Author: 皓月溪 <499886941@qq.com>
+Date:   Wed Apr 16 16:47:16 2025 +0800
+
+    实现以下接口：新建跑腿任务、更新任务、取消任务、获取任务列表
+
+[33mcommit 828860f36ddc0b9f48474a4197d17741c1874b50[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Wed Apr 16 13:17:39 2025 +0800
+
+    update couriers fun delete
+
+[33mcommit 7d54e3dce6f52c46ccf55f32d062bd5530f3b196[m[33m ([m[1;32mmain[m[33m)[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon Apr 14 11:16:02 2025 +0800
+
+    add readme
+
+[33mcommit 1f5f23342f0e196f867b41f41ed65035b5c700f4[m
+Author: Ghostenpower <2315181588@qq.com>
+Date:   Mon Apr 14 11:08:26 2025 +0800
+
+    first commit

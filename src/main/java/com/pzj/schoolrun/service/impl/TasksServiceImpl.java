@@ -27,9 +27,7 @@ public class TasksServiceImpl extends ServiceImpl<TasksMapper, Tasks> implements
 
     @Override
     public List<Tasks> getByUserId(Long userId) {
-        LambdaQueryWrapper<Tasks> queryWrap = new LambdaQueryWrapper<>();
-        queryWrap.eq(Tasks::getUserId,userId);
-        return tasksMapper.selectList(queryWrap);
+        return tasksMapper.selectList(new QueryWrapper<Tasks>().eq("user_id", userId).orderByDesc("created_at"));
     }
     @Override
     public boolean updateTaskStatus(Long taskId, Integer status, Long courierId) {

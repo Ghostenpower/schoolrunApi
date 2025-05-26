@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -122,8 +123,16 @@ public class UsersController extends BaseController {
             if (!success) {
                 return Result.error(StatusCode.SERVER_ERROR);
             }
+            //通过名字获取注册用户id
+            Users newUser = usersService.lambdaQuery()
+                    .eq(Users::getUsername, userRegisterVO.getUsername()).one();
+            Long userId = newUser.getUserId();
+            String username  = newUser.getUsername();
+            Map<String, Object> map = new HashMap<>();
+            map.put("userId", userId);
+            map.put("username", username);
 
-            return Result.success();
+            return Result.success(map);
         } catch (Exception e) {
             return Result.error("注册失败：" + e.getMessage());
         }
@@ -209,5 +218,9 @@ public class UsersController extends BaseController {
         return Result.success(userLoginDTO);
     }
 
-
+    @PostMapping("getCourierUserInfoByTaskId")
+    public Result<?> getCourierUserInfoByTaskId(@RequestParam Long taskId) {
+        Users user = usersService.getCourierUserInfoByTaskId(taskId);
+        return Result.success(user);
+    }
 }

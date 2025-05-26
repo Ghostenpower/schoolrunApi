@@ -91,6 +91,11 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
         return Result.success(Map.of("newBalance", user.getBalance()));
     }
 
+    @Override
+    public Users getCourierUserInfoByTaskId(Long taskId) {
+        return usersMapper.getCourierUserInfoByTaskId(taskId);
+    }
+
 
     @Override
     public Users getUserByCourierId(Long courierId) {

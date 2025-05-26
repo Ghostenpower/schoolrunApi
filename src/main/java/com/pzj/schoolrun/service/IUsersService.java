@@ -21,4 +21,6 @@ public interface IUsersService extends IService<Users> {
     Users getUserByCourierId(Long courierId);
     Result<?> payCommission(Long userId, BigDecimal amount);
     Result<?> commissionReceived(Long userId, BigDecimal amount);
+
+    Users getCourierUserInfoByTaskId(Long taskId);
 }

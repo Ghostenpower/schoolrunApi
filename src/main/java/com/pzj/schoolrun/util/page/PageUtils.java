@@ -10,6 +10,8 @@ public class PageUtils {
         String pageNumStr = ServletUtils.getParameter("pageNum");
         String pageSizeStr = ServletUtils.getParameter("pageSize");
         String orderByStr = ServletUtils.getParameter("orderBy");
+        //打印分页参数
+        log.info("分页参数: pageNum={}, pageSize={}, orderBy={}", pageNumStr, pageSizeStr, orderByStr);
 
         Integer pageNum = parseWithDefault(pageNumStr, 1);
         Integer pageSize = parseWithDefault(pageSizeStr, 10);

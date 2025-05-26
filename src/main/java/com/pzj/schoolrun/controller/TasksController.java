@@ -56,11 +56,10 @@ public class TasksController extends BaseController {
         return Result.success(PageInfo.of(list));
     }
 
-    @GetMapping("/myPublic")
+    @PostMapping("/myPublic")
     public Result<?> list() {
         startPage();
         Long userId = getUserId();
-
         List<Tasks> list = tasksService.getByUserId(userId);
         return Result.success(PageInfo.of(list));
     }
